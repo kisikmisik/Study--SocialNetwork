@@ -1,2 +1,2 @@
-# Stydy--SocialNetwork
+# Study--SocialNetwork
 First React-app
