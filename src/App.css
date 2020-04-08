@@ -8,22 +8,3 @@
   "h h"
   "m c";
 }
-
-.header {
-  background: red;
-  grid-area: h;
-}
-
-.main-nav {
-  background: blue;
-  grid-area: m;
-}
-
-.content {
-  background: green;
-  grid-area: c;
-}
-
-.content__wallpaper {
-  width: 100%;
-}
