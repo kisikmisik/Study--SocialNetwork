@@ -1,4 +1,17 @@
 .nav {
-    background: blue;
     grid-area: m;
-  }
+}
+
+.nav__list {
+  list-style: none;
+}
+
+.item {
+  margin-bottom: 15px;
+}
+
+.item a {
+  font-size: 20px;
+  color: #285473;
+  text-decoration: none;
+}

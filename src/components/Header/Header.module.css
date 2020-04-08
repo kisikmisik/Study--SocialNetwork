@@ -1,4 +1,15 @@
 .header {
-    background: red;
-    grid-area: h;
+    background: #4a76a8;
+    position: fixed;
+    width: 100%;
   }
+
+.wrapper {
+  max-width: 1200px;
+	margin: 0 auto;
+  padding: 0 15px;
+}
+
+.header img {
+  margin: 5px 0;
+}

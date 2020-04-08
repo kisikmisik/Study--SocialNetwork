@@ -5,8 +5,8 @@ import s from './Avatar.module.css';
 
 const Avatar = () => {
     return (
-        <img src="https://image.shutterstock.com/image-vector/male-avatar-profile-picture-vector-260nw-149083895.jpg"
-            alt="profile picture" class={s.avatar} />
+        <img src="https://i.pinimg.com/originals/6a/72/7e/6a727eb17e38eb87432fef010b2a1221.jpg"
+             height="300" alt="profile picture" class={s.avatar} />
     )
 }
 

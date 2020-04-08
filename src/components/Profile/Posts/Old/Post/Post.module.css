@@ -1,0 +1,11 @@
+.post {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.post img {
+    margin-right: 15px;
+}

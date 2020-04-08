@@ -4,7 +4,10 @@ import s from './Header.module.css';
 const Header = () => {
     return (
         <header className={s.header}>
-            <img src="https://static.gazetapowiatowa.pl/2019/10/logo-konkurs-773x515.jpg" width="200" alt="logo"/>
+            <div className={s.wrapper}>
+                <img src="https://image.flaticon.com/icons/svg/471/471468.svg"
+                 height="50" alt="logo"/>
+            </div>
         </header>
     );
 }
