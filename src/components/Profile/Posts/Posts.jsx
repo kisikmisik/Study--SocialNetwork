@@ -8,7 +8,7 @@ const Posts = () => {
         <section className={s.posts}>
             <h2 className={s.header}>My posts</h2>
             <New />
-            <Old />
+            <Old />       
         </section>
     )
 }
