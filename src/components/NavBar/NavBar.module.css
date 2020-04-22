@@ -15,3 +15,7 @@
   color: #285473;
   text-decoration: none;
 }
+
+.active {
+  font-size: 30px;
+}

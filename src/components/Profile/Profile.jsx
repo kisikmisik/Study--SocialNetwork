@@ -4,12 +4,12 @@ import Info from './Info/Info';
 import Posts from './Posts/Posts';
 import s from './Profile.module.css';
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <section className={s.profile}>
             <Wallpaper />
             <Info />
-            <Posts />
+            <Posts postsData={props.postsData} />
         </section>
     );
 }

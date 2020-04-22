@@ -2,11 +2,13 @@ import React from 'react';
 import s from './Old.module.css';
 import Post from './Post/Post';
 
-const Old = () => {
+const Old = (props) => {
+
+    let postsElements = props.postsData.map(el => <Post message={el.message} likes={el.likes}/>)
+
     return (
         <div className={s.old}>
-            <Post message="It's my first props!" likes="20" />
-            <Post message="Wow! That's amazing!" likes="13" />
+            {postsElements}
         </div>
     )
 }

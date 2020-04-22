@@ -1,0 +1,7 @@
+.messages {
+    display: flex;
+}
+
+.messages ul {
+    list-style: none;
+}
