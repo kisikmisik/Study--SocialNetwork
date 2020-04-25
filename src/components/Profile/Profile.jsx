@@ -8,8 +8,10 @@ const Profile = (props) => {
     return (
         <section className={s.profile}>
             <Wallpaper />
-            <Info />
-            <Posts postsData={props.postsData} />
+            <div className={s.wrapper}>
+                <Info />
+                <Posts postsData={props.postsData} />
+            </div>
         </section>
     );
 }

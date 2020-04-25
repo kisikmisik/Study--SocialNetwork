@@ -1,0 +1,44 @@
+.conversation {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.conversation li {
+    width: 100px;
+    padding: 10px;
+    background: black;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.inputWrapper {
+    position: relative;
+}
+
+.inputWrapper button {
+    position: absolute;
+    height: 100%;
+    right: 30px;
+    border: none;
+    background: transparent;
+}
+
+.input {
+    width: 500px;
+    height: 30px;
+    align-self: center;
+    border: none;
+    background: #edeef0;
+    border-radius: 10px;
+    padding: 10px;
+    padding-right: 90px;
+    font-family: Arial, sans-serif;
+}

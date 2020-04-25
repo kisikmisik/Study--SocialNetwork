@@ -1,5 +1,9 @@
 .messages {
     display: flex;
+    background: white;
+    border-radius: 10px;
+    padding-bottom: 30px;
+    padding-left: 60px;
 }
 
 .messages ul {

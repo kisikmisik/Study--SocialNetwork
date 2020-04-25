@@ -1,37 +1,36 @@
 .visually-hidden:not(:focus):not(:active) {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
 
-  white-space: nowrap;
+    white-space: nowrap;
 
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
 }
 
 html {
-  background: #edeef0;
+    background: #edeef0;
 }
 
 .container {
-	max-width: 1200px;
-	margin: 0 auto;
-  padding: 0 15px;
-  padding-top: 70px;
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: 
-  "m c";
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    padding-top: 70px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "m c";
 }
 
 @media screen and (min-width: 350px) and (max-width: 800px) {
-  .container {
-    min-width: 300px;
-    max-width: 750px;
-  }
+    .container {
+        min-width: 300px;
+        max-width: 750px;
+    }
 }

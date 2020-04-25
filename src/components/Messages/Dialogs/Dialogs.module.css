@@ -1,0 +1,15 @@
+.dialog a {
+    font-size: 18px;
+    color: #285473;;
+    text-decoration: none;
+}
+
+.dialog {
+    margin-bottom: 15px;
+}
+
+.dialogs {
+    margin-right: 40px;
+    width: 100px;
+    border-right: 2px solid #285473;
+}

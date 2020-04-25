@@ -3,30 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import state from './state.js';
 
-let peopleData = [
-    {id: 1, name: "Оленька"},
-    {id: 1, name: "Дима"},
-    {id: 1, name: "Лиза"},
-    {id: 1, name: "Сережа"},
-    {id: 1, name: "Аркаша"}
-]
 
-let messagesData = [
-    {id: 1, message: "Привет"},
-    {id: 2, message: "Доров"},
-    {id: 3, message: "Как дела?"},
-    {id: 4, message: "Заебца"},
-    {id: 5, message: "Сам как?"},
-]
-
-let postsData = [
-    {id: 1, message: "It's my first props!", likes: 20},
-    {id: 2, message: "Wow! That's amazing!", likes: 12}
-]
 ReactDOM.render(
   <React.StrictMode>
-    <App peopleData={peopleData} messagesData={messagesData} postsData={postsData} />
+    <App friendsData={state.friendsData} peopleData={state.peopleData} messagesData={state.messagesData} postsData={state.postsData} />
   </React.StrictMode>,
   document.getElementById('root')
 );

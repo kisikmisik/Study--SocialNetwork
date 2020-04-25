@@ -1,7 +1,10 @@
 .profile {
     background: white;
     grid-area: c;
-    padding: 30px 15px;
     margin: 15px;
     border-radius: 15px;
-  }
+}
+
+.wrapper {
+    padding-left: 25px;
+}

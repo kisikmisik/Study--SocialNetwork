@@ -15,7 +15,7 @@ function App(props) {
             <div className="page-wrapper">
                 <Header/>
                 <div className="container">
-                    <NavBar/>
+                    <NavBar friendsData={props.friendsData}/>
                     <Route path='/profile' render={() => <Profile postsData={props.postsData}/>}/>
                     <Route path='/messages' render={() => <Messages peopleData={props.peopleData} messagesData={props.messagesData}/>}/>
                     <Route path='/news' component={News}/>
