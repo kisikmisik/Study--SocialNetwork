@@ -7,10 +7,10 @@ const Posts = (props) => {
     return (
         <section className={s.posts}>
             <h2 className={s.header}>My posts</h2>
-            <New postAreaText={props.postAreaText}
+            <New postAreaText={props.state.profilePage.postAreaText}
                  addPost={props.addPost}
                  changePostText={props.changePostText}/>
-            <Old postsData={props.postsData}/>
+            <Old postsData={props.state.profilePage.postsData}/>
         </section>
     )
 }

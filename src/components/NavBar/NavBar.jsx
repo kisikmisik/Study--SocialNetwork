@@ -7,7 +7,7 @@ const NavBar = (props) => {
     return (
         <div className={s.navWrapper}>
             <Menu/>
-            <Friends friendsData={props.navBar.friendsData}/>
+            <Friends state={props.state}/>
         </div>
 );
 }

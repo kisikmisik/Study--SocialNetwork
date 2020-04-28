@@ -11,17 +11,20 @@ import Settings from "./components/Settings/Settings";
 
 function App(props) {
     return (
-            <div className="page-wrapper">
-                <Header/>
-                <div className="container">
-                    <NavBar navBar={props.store.state.navBar}/>
-                    <Route path='/profile' render={() => <Profile profilePage={props.store.state.profilePage} />}/>
-                    <Route path='/messages' render={() => <Messages messagesPage={props.store.state.messagesPage} />}/>
-                    <Route path='/news' component={News}/>
-                    <Route path='/music' component={Music}/>
-                    <Route path='/settings' component={Settings}/>
-                </div>
+        <div className="page-wrapper">
+            <Header/>
+            <div className="container">
+                <NavBar state={props.state}/>
+                <Route path='/profile' render={() => <Profile state={props.state}
+                                                              changePostText={props.changePostText}
+                                                              addPost={props.addPost}/>}/>
+                <Route path='/messages' render={() => <Messages addMessage={props.addMessage}
+                                                                state={props.state}/>}/>
+                <Route path='/news' component={News}/>
+                <Route path='/music' component={Music}/>
+                <Route path='/settings' component={Settings}/>
             </div>
+        </div>
     );
 }
 

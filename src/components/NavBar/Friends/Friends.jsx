@@ -3,7 +3,7 @@ import s from './Friends.module.css';
 import {NavLink} from "react-router-dom";
 
 const Friends = (props) => {
-    let friendsList = props.friendsData.map(el =>
+    let friendsList = props.state.navBar.friendsData.map(el =>
         <li className={s.item}>
             <NavLink to="/pasha">
                 <img width="40" src={el.img} alt="avatar"/>

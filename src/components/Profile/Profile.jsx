@@ -10,10 +10,9 @@ const Profile = (props) => {
             <Wallpaper />
             <div className={s.wrapper}>
                 <Info />
-                <Posts postAreaText={props.profilePage.postAreaText}
-                       addPost={props.profilePage.addPost}
-                       postsData={props.profilePage.postsData}
-                       changePostText={props.profilePage.changePostText}/>
+                <Posts addPost={props.addPost}
+                       state={props.state}
+                       changePostText={props.changePostText}/>
             </div>
         </section>
     );

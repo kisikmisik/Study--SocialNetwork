@@ -2,7 +2,7 @@ export let store = {
     renderAllTree () {
         console.log('state changed');
     },
-    state: {
+    _state: {
         messagesPage: {
             messagesData: [
                 {id: 1, message: "Привет", classSet: "me"},
@@ -18,36 +18,13 @@ export let store = {
                 {id: 1, name: "Сережа"},
                 {id: 1, name: "Аркаша"}
             ],
-            addMessage (message) {
-                let newMessage = {
-                    id: 1,
-                    message: message,
-                    classSet: "me"
-                }
-                store.state.messagesPage.messagesData.push(newMessage);
-                store.renderAllTree();
-            }
         },
         profilePage: {
             postsData: [
                 {id: 1, message: "It's my first props!", likes: 20},
                 {id: 2, message: "Wow! That's amazing!", likes: 12}
             ],
-            postAreaText: 'pipisya',
-            changePostText(message) {
-                store.state.profilePage.postAreaText = message;
-                store.renderAllTree();
-            },
-            addPost(message) {
-                let newPost = {
-                    id: 3,
-                    message: message,
-                    likes: 15
-                }
-                store.state.profilePage.postsData.push(newPost);
-                store.state.profilePage.postAreaText = "";
-                store.renderAllTree();
-            }
+            postAreaText: ''
         },
         navBar: {
             friendsData: [
@@ -57,8 +34,33 @@ export let store = {
             ]
         }
     },
+    getState() {
+        return this._state;
+    },
     subscribe (observer) {
         this.renderAllTree = observer;
+    },
+    addMessage (message) {
+        let newMessage = {
+            id: 1,
+            message: message
+        }
+        this._state.messagesPage.messagesData.push(newMessage);
+        this.renderAllTree();
+    },
+    changePostText(message) {
+        this._state.profilePage.postAreaText = message;
+        this.renderAllTree();
+    },
+    addPost(message) {
+        let newPost = {
+            id: 3,
+            message: message,
+            likes: 15
+        }
+        this._state.profilePage.postsData.push(newPost);
+        this._state.profilePage.postAreaText = "";
+        this.renderAllTree();
     }
 }
-window.sisi = store.state.profilePage.postAreaText;
+
