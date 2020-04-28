@@ -5,12 +5,16 @@ import Posts from './Posts/Posts';
 import s from './Profile.module.css';
 
 const Profile = (props) => {
+
     return (
         <section className={s.profile}>
             <Wallpaper />
             <div className={s.wrapper}>
                 <Info />
-                <Posts postsData={props.postsData} />
+                <Posts postAreaText={props.postAreaText}
+                       addPost={props.addPost}
+                       postsData={props.postsData}
+                       changePostText={props.changePostText}/>
             </div>
         </section>
     );

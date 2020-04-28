@@ -7,7 +7,9 @@ const Posts = (props) => {
     return (
         <section className={s.posts}>
             <h2 className={s.header}>My posts</h2>
-            <New />
+            <New postAreaText={props.postAreaText}
+                 addPost={props.addPost}
+                 changePostText={props.changePostText}/>
             <Old postsData={props.postsData}/>
         </section>
     )

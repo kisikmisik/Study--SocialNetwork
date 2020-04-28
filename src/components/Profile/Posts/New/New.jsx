@@ -1,12 +1,23 @@
 import React from 'react';
 import s from './New.module.css';
 
-const New = () => {
+const New = (props) => {
+    let textarea = React.createRef();
+
+    let addNewPost = () => {
+        let textareaMessage = textarea.current.value;
+        props.addPost(textareaMessage);
+    }
+
+    let changeAreaText = () => {
+        props.changePostText(textarea.current.value);
+    }
+
     return (
-        <form className={s.wrapper}>
-            <input type="text" placeholder="What's new?" />
-            <button type="submit">Post</button>
-        </form>
+        <div className={s.wrapper}>
+            <textarea ref={textarea} value={props.postAreaText} onChange={changeAreaText}/>
+            <button onClick={addNewPost}>Post</button>
+        </div>
     )
 }
 

@@ -3,9 +3,10 @@
     margin-bottom: 80px;
 }
 
-.wrapper input {
+.wrapper textarea {
     height: 100%;
-    padding-left: 15px;
+    box-sizing: border-box;
+    padding: 15px;
     border: none;
     width: 600px;
     background: #edeef0;
