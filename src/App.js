@@ -14,13 +14,9 @@ function App(props) {
             <div className="page-wrapper">
                 <Header/>
                 <div className="container">
-                    <NavBar friendsData={props.friendsData}/>
-                    <Route path='/profile' render={() => <Profile
-                        postAreaText={props.postAreaText}
-                        addPost={props.addPost}
-                        postsData={props.postsData}
-                        changePostText={props.changePostText}/>}/>
-                    <Route path='/messages' render={() => <Messages addMessage={props.addMessage} peopleData={props.peopleData} messagesData={props.messagesData}/>}/>
+                    <NavBar navBar={props.store.state.navBar}/>
+                    <Route path='/profile' render={() => <Profile profilePage={props.store.state.profilePage} />}/>
+                    <Route path='/messages' render={() => <Messages messagesPage={props.store.state.messagesPage} />}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
