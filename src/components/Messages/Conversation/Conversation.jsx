@@ -1,14 +1,22 @@
 import React from 'react';
 import s from './Conversation.module.css';
+import {addMessageActionCreator, changeMessageActionCreator} from "../../../state";
+
+
 
 const Conversation = (props) => {
-    let messagesElements = props.messagesData.map(el => <li className={el.classSet}>{el.message}</li>)
+    let messagesElements = props.state.messagesPage.messagesData.map(el => <li className={el.classSet}>{el.message}</li>)
     let messageField = React.createRef();
 
     let submitMessage = () => {
         let currentMessage = messageField.current.value;
-        props.addMessage(currentMessage);
+        props.dispatch(addMessageActionCreator(currentMessage));
         messageField.current.value = '';
+    }
+
+    let onAreaChange = (evt) => {
+        let currentMessage = evt.target.value;
+        props.dispatch(changeMessageActionCreator(currentMessage));
     }
 
     return (
@@ -17,7 +25,7 @@ const Conversation = (props) => {
                 {messagesElements}
             </ul>
             <div className={s.inputWrapper}>
-                <textarea ref={messageField} className={s.input} />
+                <textarea value={props.state.messagesPage.currentMessage} onChange={onAreaChange} ref={messageField} className={s.input} />
                 <button onClick={submitMessage}>Отправить</button>
             </div>
         </div>

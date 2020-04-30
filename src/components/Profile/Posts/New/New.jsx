@@ -1,16 +1,22 @@
 import React from 'react';
 import s from './New.module.css';
+import {addNewPostActionCreator, changeAreaTextActionCreator} from "../../../../state";
+
+
 
 const New = (props) => {
     let textarea = React.createRef();
 
     let addNewPost = () => {
         let textareaMessage = textarea.current.value;
-        props.addPost(textareaMessage);
+        let action = addNewPostActionCreator(textareaMessage);
+        props.dispatch(action);
     }
 
     let changeAreaText = () => {
-        props.changePostText(textarea.current.value);
+        let textareaMessage = textarea.current.value;
+        let action = changeAreaTextActionCreator(textareaMessage);
+        props.dispatch(action);
     }
 
     return (

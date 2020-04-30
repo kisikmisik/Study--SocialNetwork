@@ -11,9 +11,7 @@ let renderAllTree = () => {
         <React.StrictMode>
             <BrowserRouter>
                 <App state={store.getState()}
-                     addMessage={store.addMessage.bind(store)}
-                     changePostText={store.changePostText.bind(store)}
-                     addPost={store.addPost.bind(store)}/>
+                     dispatch={store.dispatch.bind(store)}/>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
@@ -24,4 +22,4 @@ let renderAllTree = () => {
     serviceWorker.unregister();
 }
 
-renderAllTree(store.state);
+renderAllTree(store.getState());

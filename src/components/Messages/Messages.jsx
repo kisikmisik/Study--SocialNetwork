@@ -7,7 +7,7 @@ const Messages = (props) => {
     return (
         <section className={s.messages}>
            <Dialogs peopleData={props.state.messagesPage.peopleData}/>
-           <Conversation addMessage={props.addMessage} messagesData={props.state.messagesPage.messagesData}/>
+           <Conversation dispatch={props.dispatch} state={props.state}/>
         </section>
     );
 }

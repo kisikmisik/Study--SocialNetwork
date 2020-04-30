@@ -18,6 +18,7 @@ export let store = {
                 {id: 1, name: "Сережа"},
                 {id: 1, name: "Аркаша"}
             ],
+            currentMessage: ""
         },
         profilePage: {
             postsData: [
@@ -40,27 +41,61 @@ export let store = {
     subscribe (observer) {
         this.renderAllTree = observer;
     },
-    addMessage (message) {
-        let newMessage = {
-            id: 1,
-            message: message
+
+    // addMessage (message) {
+    //     let newMessage = {
+    //         id: 1,
+    //         message: message
+    //     }
+    //     this._state.messagesPage.messagesData.push(newMessage);
+    //     this.renderAllTree();
+    // },
+    // changePostText(message) {
+    //     this._state.profilePage.postAreaText = message;
+    //     this.renderAllTree();
+    // },
+    // addPost(message) {
+    //     let newPost = {
+    //         id: 3,
+    //         message: message,
+    //         likes: 15
+    //     }
+    //     this._state.profilePage.postsData.push(newPost);
+    //     this._state.profilePage.postAreaText = "";
+    //     this.renderAllTree();
+    // },
+    dispatch(action) {
+        if (action.type === 'ADD-MESSAGE') {
+            let newMessage = {
+                id: 1,
+                message: action.message
+            }
+            this._state.messagesPage.messagesData.push(newMessage);
+            this.renderAllTree();
+
+        } else if (action.type === 'CHANGE-POST-TEXT') {
+            this._state.profilePage.postAreaText = action.message;
+            this.renderAllTree();
+
+        } else if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 3,
+                message: action.message,
+                likes: 15
+            }
+            this._state.profilePage.postsData.push(newPost);
+            this._state.profilePage.postAreaText = "";
+            this.renderAllTree();
+
+        } else if (action.type === 'CHANGE-MESSAGE-TEXT') {
+            this._state.messagesPage.currentMessage = action.message;
+            this.renderAllTree();
         }
-        this._state.messagesPage.messagesData.push(newMessage);
-        this.renderAllTree();
-    },
-    changePostText(message) {
-        this._state.profilePage.postAreaText = message;
-        this.renderAllTree();
-    },
-    addPost(message) {
-        let newPost = {
-            id: 3,
-            message: message,
-            likes: 15
-        }
-        this._state.profilePage.postsData.push(newPost);
-        this._state.profilePage.postAreaText = "";
-        this.renderAllTree();
     }
 }
+
+export const addMessageActionCreator = (message) => ({ type: 'ADD-MESSAGE', message: message})
+export const addNewPostActionCreator = (message) => ({ type: 'ADD-POST', message: message})
+export const changeAreaTextActionCreator = (message) => ({ type: 'CHANGE-POST-TEXT', message: message})
+export const changeMessageActionCreator = (message) => ({ type: 'CHANGE-MESSAGE-TEXT', message: message })
 
