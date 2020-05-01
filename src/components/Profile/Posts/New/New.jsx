@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './New.module.css';
-import {addNewPostActionCreator, changeAreaTextActionCreator} from "../../../../state";
+import {addNewPostActionCreator, changeAreaTextActionCreator} from "../../../../redux/profilePage-reducer";
 
 
 

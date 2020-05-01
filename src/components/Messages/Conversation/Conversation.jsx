@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Conversation.module.css';
-import {addMessageActionCreator, changeMessageActionCreator} from "../../../state";
+import {addMessageActionCreator, changeMessageActionCreator} from "../../../redux/messagesPage-reducer";
 
 
 
