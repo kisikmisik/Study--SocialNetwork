@@ -53,9 +53,5 @@ export let store = {
         this.renderAllTree();
     }
 }
-//
-// export const addMessageActionCreator = (message) => ({ type: 'ADD-MESSAGE', message: message})
-// export const addNewPostActionCreator = (message) => ({ type: 'ADD-POST', message: message})
-// export const changeAreaTextActionCreator = (message) => ({ type: 'CHANGE-POST-TEXT', message: message})
-// export const changeMessageActionCreator = (message) => ({ type: 'CHANGE-MESSAGE-TEXT', message: message })
+
 
