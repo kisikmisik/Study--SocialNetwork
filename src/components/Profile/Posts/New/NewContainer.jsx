@@ -1,25 +1,26 @@
 import React from 'react';
 import {addNewPostActionCreator, changeAreaTextActionCreator} from "../../../../redux/profilePage-reducer";
 import New from "./New";
+import {connect} from "react-redux";
 
-const NewContainer = (props) => {
-    let textarea = React.createRef();
-
-    let addNewPost = (message) => {
-        let action = addNewPostActionCreator(message);
-        props.store.dispatch(action);
+const mapStateToProps = (state) => {
+    return {
+        postAreaText: state.profilePage.postAreaText
     }
-
-    let changeAreaText = (message) => {
-        let action = changeAreaTextActionCreator(message);
-        props.store.dispatch(action);
-    }
-
-    return (
-        <New addNewPost={addNewPost}
-             changeAreaText={changeAreaText}
-             postAreaText={props.store.getState().profilePage.postAreaText}/>
-    )
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addNewPost: (message) => {
+            let action = addNewPostActionCreator(message);
+            dispatch(action);
+        },
+        changeAreaText: (message) => {
+            let action = changeAreaTextActionCreator(message);
+            dispatch(action);
+        }
+    }
+}
+
+const NewContainer = connect(mapStateToProps, mapDispatchToProps)(New)
 
 export default NewContainer;

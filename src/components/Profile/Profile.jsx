@@ -10,7 +10,7 @@ const Profile = (props) => {
             <Wallpaper />
             <div className={s.wrapper}>
                 <Info />
-                <Posts store={props.store}/>
+                <Posts/>
             </div>
         </section>
     );

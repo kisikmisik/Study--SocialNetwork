@@ -4,6 +4,8 @@ import s from './Conversation.module.css';
 const Conversation = (props) => {
     let messageField = React.createRef();
 
+    let messagesElements = props.messagesData.map(el => <li className={el.classSet}>{el.message}</li>)
+
     let submitMessage = () => {
         let currentMessage = messageField.current.value;
         props.addMessage(currentMessage);
@@ -17,7 +19,7 @@ const Conversation = (props) => {
     return (
         <div className={s.wrapper}>
             <ul className={s.conversation}>
-                {props.messagesElements}
+                {messagesElements}
             </ul>
             <div className={s.inputWrapper}>
                 <textarea value={props.currentMessage} onChange={onAreaChange} ref={messageField} className={s.input} />

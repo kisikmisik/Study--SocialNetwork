@@ -6,8 +6,8 @@ import ConversationContainer from "./Conversation/ConversationContainer";
 const Messages = (props) => {
     return (
         <section className={s.messages}>
-           <DialogsContainer store={props.store}/>
-           <ConversationContainer store={props.store}/>
+           <DialogsContainer />
+           <ConversationContainer />
         </section>
     );
 }

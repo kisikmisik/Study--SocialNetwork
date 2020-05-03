@@ -1,13 +1,19 @@
 import React from 'react';
-import Post from './Post/Post';
 import Old from "./Old";
+import {connect} from "react-redux";
 
-let OldContainer = (props) => {
-    let postsElements = props.store.getState().profilePage.postsData.map(el => <Post message={el.message} likes={el.likes}/>)
-
-    return (
-        <Old drawPosts={postsElements}/>
-    )
+const mapStateToProps = (state) => {
+    return {
+      postsData: state.profilePage.postsData
+    }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    }
+}
+
+const OldContainer = connect(mapStateToProps, mapDispatchToProps) (Old)
 
 export default OldContainer;

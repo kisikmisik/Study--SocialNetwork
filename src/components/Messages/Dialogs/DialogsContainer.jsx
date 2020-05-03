@@ -1,15 +1,18 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
 import Dialogs from "./Dialogs";
+import {connect} from "react-redux";
 
-
-const DialogsContainer = (props) => {
-    // let peopleElements = props.store.getState().messagesPage.peopleData.map(element =>
-    //     <li className={s.dialog}><NavLink to="messages/3">{element.name}</NavLink></li>);
-
-    return (
-        <Dialogs peopleData={props.store.getState().messagesPage.peopleData}/>
-    );
+const mapStateToProps = (state) => {
+    return {
+        peopleData: state.messagesPage.peopleData
+    }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    }
+}
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps) (Dialogs)
 
 export default DialogsContainer;

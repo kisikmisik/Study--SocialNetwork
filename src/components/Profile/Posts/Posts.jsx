@@ -7,8 +7,8 @@ const Posts = (props) => {
     return (
         <section className={s.posts}>
             <h2 className={s.header}>My posts</h2>
-            <NewContainer store={props.store}/>
-            <OldContainer store={props.store}/>
+            <NewContainer />
+            <OldContainer />
         </section>
     )
 }
