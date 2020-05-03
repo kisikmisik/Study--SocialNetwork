@@ -1,28 +1,23 @@
 import React from 'react';
 import s from './New.module.css';
-import {addNewPostActionCreator, changeAreaTextActionCreator} from "../../../../redux/profilePage-reducer";
-
-
 
 const New = (props) => {
     let textarea = React.createRef();
 
-    let addNewPost = () => {
+    let onPostChange = () => {
         let textareaMessage = textarea.current.value;
-        let action = addNewPostActionCreator(textareaMessage);
-        props.dispatch(action);
+        props.changeAreaText(textareaMessage);
     }
 
-    let changeAreaText = () => {
+    let addPost = () => {
         let textareaMessage = textarea.current.value;
-        let action = changeAreaTextActionCreator(textareaMessage);
-        props.dispatch(action);
+        props.addNewPost(textareaMessage);
     }
 
     return (
         <div className={s.wrapper}>
-            <textarea ref={textarea} value={props.postAreaText} onChange={changeAreaText}/>
-            <button onClick={addNewPost}>Post</button>
+            <textarea ref={textarea} value={props.postAreaText} onChange={onPostChange}/>
+            <button onClick={addPost}>Post</button>
         </div>
     )
 }

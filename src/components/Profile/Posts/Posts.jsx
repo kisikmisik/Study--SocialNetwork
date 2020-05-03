@@ -1,15 +1,14 @@
 import React from 'react';
 import s from './Posts.module.css';
-import New from './New/New';
-import Old from './Old/Old';
+import NewContainer from "./New/NewContainer";
+import OldContainer from "./Old/OldContainer";
 
 const Posts = (props) => {
     return (
         <section className={s.posts}>
             <h2 className={s.header}>My posts</h2>
-            <New postAreaText={props.state.profilePage.postAreaText}
-                 dispatch={props.dispatch}/>
-            <Old postsData={props.state.profilePage.postsData}/>
+            <NewContainer store={props.store}/>
+            <OldContainer store={props.store}/>
         </section>
     )
 }

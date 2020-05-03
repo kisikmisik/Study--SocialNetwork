@@ -10,8 +10,7 @@ const Profile = (props) => {
             <Wallpaper />
             <div className={s.wrapper}>
                 <Info />
-                <Posts dispatch={props.dispatch}
-                       state={props.state}/>
+                <Posts store={props.store}/>
             </div>
         </section>
     );
