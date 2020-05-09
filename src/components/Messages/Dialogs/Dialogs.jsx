@@ -7,7 +7,7 @@ const Dialogs = (props) => {
         <li className={s.dialog}><NavLink to="messages/3">{element.name}</NavLink></li>);
     return (
         <ul className={s.dialogs}>
-            {props.drawDialogs}
+            {peopleElements}
         </ul>
     );
 }

@@ -4,7 +4,7 @@ import s from './Conversation.module.css';
 const Conversation = (props) => {
     let messageField = React.createRef();
 
-    let messagesElements = props.messagesData.map(el => <li className={el.classSet}>{el.message}</li>)
+    let messagesElements = props.messagesData.map(el => <li key={el.id} className={el.classSet}>{el.message}</li>)
 
     let submitMessage = () => {
         let currentMessage = messageField.current.value;
