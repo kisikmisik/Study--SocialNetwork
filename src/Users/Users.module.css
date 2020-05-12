@@ -1,0 +1,26 @@
+.users {
+   list-style: none;
+    padding-left: 40px;
+    width: 700px;
+}
+.user {
+    display: flex;
+    margin-bottom: 40px;
+}
+.profilePhoto {
+    margin-right: 30px;
+}
+.followButton {
+    width: 200px;
+    height: 40px;
+    background: #4a76a8;
+    color: white;
+    margin-left: auto;
+    border: none;
+    align-self: center;
+}
+.userLocation, .userStatus {
+    color: gray;
+    font-size: 14px;
+    margin: 5px
+}
