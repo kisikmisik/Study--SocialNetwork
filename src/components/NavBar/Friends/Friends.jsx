@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 
 const Friends = (props) => {
     let friendsList = props.friendsData.map(el =>
-        <li className={s.item}>
+        <li key={el.id} className={s.item}>
             <NavLink to="/pasha">
                 <img width="40" src={el.img} alt="avatar"/>
                 <span>{el.name}</span>

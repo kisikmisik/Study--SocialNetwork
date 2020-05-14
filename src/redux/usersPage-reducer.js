@@ -1,22 +1,8 @@
 let initialState = {
-    users: [
-        // {
-        //     id: 1, photo: 'https://webtous.ru/wp-content/uploads/2017/09/round-avatar.png',
-        //     followed: false, name: 'Vladimir P.', location: 'Moscow, Russia', message: 'Я покакал'
-        // },
-        // {
-        //     id: 2, photo: 'https://webtous.ru/wp-content/uploads/2017/09/round-avatar.png',
-        //     followed: true, name: 'Volodymyr Z.', location: 'Kiev, Ukraine', message: 'Люблю снега в конце апреля'
-        // },
-        // {
-        //     id: 3, photo: 'https://webtous.ru/wp-content/uploads/2017/09/round-avatar.png',
-        //     followed: false, name: 'Valdemar P.', location: 'Berlin, Germany', message: 'Как правильно думать?'
-        // },
-        // {
-        //     id: 4, photo: 'https://webtous.ru/wp-content/uploads/2017/09/round-avatar.png',
-        //     followed: false, name: 'Dima B.', location: 'Silicon Valley, USA', message: 'Что такое магина?'
-        // }
-    ]
+    users: [],
+    totalUsers: 100,
+    currentPage: 1,
+    pageLimit: 100
 }
 
 let usersReducer = (state = initialState, action) => {
@@ -48,6 +34,16 @@ let usersReducer = (state = initialState, action) => {
                 ...state,
                 users: action.users
             }
+        case 'SET-CURRENT-PAGE':
+            return {
+                ...state,
+                currentPage: action.page
+            }
+        case 'SET-TOTAL-COUNT':
+            return {
+                ...state,
+                totalUsers: action.usersCount
+            }
         default:
             return state
     }
@@ -57,3 +53,5 @@ export default usersReducer;
 export const loadUsersAC = (usersData) => ({type: 'LOAD-USERS', users: usersData})
 export const followAC = (id) => ({type: 'FOLLOW-USER', userId: id})
 export const unfollowAC = (id) => ({type: 'UNFOLLOW-USER', userId: id})
+export const setPageAC = (page) => ({type: 'SET-CURRENT-PAGE', page})
+export const setTotalCountAC = (usersCount) => ({type: 'SET-TOTAL-COUNT', usersCount})

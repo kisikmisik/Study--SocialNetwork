@@ -24,3 +24,13 @@
     font-size: 14px;
     margin: 5px
 }
+.pages {
+    margin: 40px 30px;
+}
+.pages span {
+    margin-right: 10px;
+    cursor: pointer;
+}
+.currentPage {
+    font-weight: bold;
+}
