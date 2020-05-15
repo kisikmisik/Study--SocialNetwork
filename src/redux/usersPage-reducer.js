@@ -2,7 +2,8 @@ let initialState = {
     users: [],
     totalUsers: 100,
     currentPage: 1,
-    pageLimit: 100
+    pageLimit: 10,
+    isFetching: false
 }
 
 let usersReducer = (state = initialState, action) => {
@@ -44,6 +45,11 @@ let usersReducer = (state = initialState, action) => {
                 ...state,
                 totalUsers: action.usersCount
             }
+        case 'CHANGE-PRELOADER-STATUS':
+            return {
+                ...state,
+                isFetching: action.currentStatus
+            }
         default:
             return state
     }
@@ -55,3 +61,4 @@ export const followAC = (id) => ({type: 'FOLLOW-USER', userId: id})
 export const unfollowAC = (id) => ({type: 'UNFOLLOW-USER', userId: id})
 export const setPageAC = (page) => ({type: 'SET-CURRENT-PAGE', page})
 export const setTotalCountAC = (usersCount) => ({type: 'SET-TOTAL-COUNT', usersCount})
+export const changePreloaderAC = (currentStatus) => ({type: 'CHANGE-PRELOADER-STATUS', currentStatus})

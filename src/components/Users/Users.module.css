@@ -1,7 +1,12 @@
+.wrapper {
+    background: white;
+    border-radius: 5px;
+}
 .users {
    list-style: none;
     padding-left: 40px;
     width: 700px;
+    position: relative;
 }
 .user {
     display: flex;
