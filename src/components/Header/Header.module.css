@@ -3,14 +3,17 @@
     position: fixed;
     width: 100%;
     z-index: 100;
-  }
-
+}
 .wrapper {
   max-width: 1200px;
-	margin: 0 auto;
+    margin: 0 auto;
   padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
 }
-
 .header img {
   margin: 5px 0;
+}
+.login {
+    color: white;
 }

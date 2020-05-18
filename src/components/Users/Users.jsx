@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Users.module.css';
 import {NavLink} from "react-router-dom"
-import profileImage from '../../assets/img/round-avatar.png'
+import profileImage from '../../assets/img/nobody_profile_image.jpg'
 import Preloader from "../common/Preloader/Preloader";
 
 let Users = (props) => {
@@ -19,7 +19,7 @@ let Users = (props) => {
             <ul className={s.users}>
                 {props.isFetching === true && <Preloader/>}
                 {props.users.map(u => <li key={u.id} className={s.user}>
-                    <NavLink to="/user" className={s.profilePhoto}>
+                    <NavLink to={"/profile/" + u.id} className={s.profilePhoto}>
                         <img src={u.photos.small === null ? profileImage : u.photos.small} alt="" width="100"/>
                     </NavLink>
                     <div className={s.userWrapper}>

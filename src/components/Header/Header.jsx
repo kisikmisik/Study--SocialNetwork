@@ -1,12 +1,15 @@
 import React from 'react';
 import s from './Header.module.css';
 
-const Header = () => {
+const Header = (props) => {
     return (
         <header className={s.header}>
             <div className={s.wrapper}>
                 <img src="https://image.flaticon.com/icons/svg/471/471468.svg"
                  height="50" alt="logo"/>
+
+             {props.authData.isAuthorized ?
+                 <p className={s.login}>{props.authData.login}</p> : <p className={s.login}>Login</p>}
             </div>
         </header>
     );

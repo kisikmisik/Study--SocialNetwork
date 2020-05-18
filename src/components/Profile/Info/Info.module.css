@@ -2,3 +2,18 @@
     display: flex;
     margin-bottom: 80px;
 }
+.avatar {
+    margin-right: 50px;
+}
+.name {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 26px;
+}
+.status {
+    color: gray;
+}
+
+.table td {
+    padding: 6px
+}
