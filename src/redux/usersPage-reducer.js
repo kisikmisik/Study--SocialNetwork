@@ -57,8 +57,8 @@ let usersReducer = (state = initialState, action) => {
 export default usersReducer;
 
 export const getUsers = (usersData) => ({type: 'LOAD-USERS', users: usersData})
-export const followUser = (id) => ({type: 'FOLLOW-USER', userId: id})
-export const unfollowUser = (id) => ({type: 'UNFOLLOW-USER', userId: id})
+export const followUser = (userId) => ({type: 'FOLLOW-USER', userId})
+export const unfollowUser = (userId) => ({type: 'UNFOLLOW-USER', userId})
 export const setCurrentPage = (page) => ({type: 'SET-CURRENT-PAGE', page})
 // export const setTotalCountAC = (usersCount) => ({type: 'SET-TOTAL-COUNT', usersCount}) too many users
 export const changePreloaderStatus = (currentStatus) => ({type: 'CHANGE-PRELOADER-STATUS', currentStatus})

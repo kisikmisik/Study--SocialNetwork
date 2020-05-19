@@ -1,5 +1,5 @@
 import React from 'react';
-import {followUser, unfollowUser, getUsers, setCurrentPage, setTotalCountAC, changePreloaderStatus} from "../../redux/usersPage-reducer";
+import {followUser, unfollowUser, getUsers, setCurrentPage, changePreloaderStatus} from "../../redux/usersPage-reducer";
 import Users from "./Users";
 import {connect} from "react-redux";
 import * as axios from 'axios';
@@ -9,7 +9,12 @@ class UsersAPI extends React.Component {
     componentDidMount() {
         this.props.changePreloaderStatus(true);
         axios
-            .get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageLimit}&page=${this.props.currentPage}`)
+            .get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageLimit}&page=${this.props.currentPage}`, {
+                withCredentials: true,
+                headers: {
+                    "API-KEY": "62c59592-bd1c-491a-b1d5-806b63a3cad6"
+                }
+            })
             .then(response => {
                     this.props.changePreloaderStatus(false);
                     this.props.getUsers(response.data.items);
@@ -21,7 +26,12 @@ class UsersAPI extends React.Component {
     onPageChanged = (currentPage) => {
         this.props.setCurrentPage(currentPage);
         this.props.changePreloaderStatus(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageLimit}&page=${currentPage}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageLimit}&page=${currentPage}`, {
+            withCredentials: true,
+            headers: {
+                "API-KEY": "62c59592-bd1c-491a-b1d5-806b63a3cad6"
+            }
+        })
             .then((response) => {
                 this.props.getUsers(response.data.items);
                 this.props.changePreloaderStatus(false);
