@@ -1,41 +1,20 @@
 import React from 'react';
-import {followUser, unfollowUser, getUsers, setCurrentPage, changePreloaderStatus} from "../../redux/usersPage-reducer";
+import {
+    setCurrentPage,
+    getUsersThunk,
+    followThunk, unfollowThunk
+} from "../../redux/usersPage-reducer";
 import Users from "./Users";
 import {connect} from "react-redux";
-import * as axios from 'axios';
 
 
-class UsersAPI extends React.Component {
+class UsersData extends React.Component {
     componentDidMount() {
-        this.props.changePreloaderStatus(true);
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageLimit}&page=${this.props.currentPage}`, {
-                withCredentials: true,
-                headers: {
-                    "API-KEY": "62c59592-bd1c-491a-b1d5-806b63a3cad6"
-                }
-            })
-            .then(response => {
-                    this.props.changePreloaderStatus(false);
-                    this.props.getUsers(response.data.items);
-                    // this.props.setTotalUsersCount(response.data.totalCount)
-                }
-            )
+        this.props.getUsersThunk(this.props.pageLimit, this.props.currentPage)
     }
 
     onPageChanged = (currentPage) => {
-        this.props.setCurrentPage(currentPage);
-        this.props.changePreloaderStatus(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageLimit}&page=${currentPage}`, {
-            withCredentials: true,
-            headers: {
-                "API-KEY": "62c59592-bd1c-491a-b1d5-806b63a3cad6"
-            }
-        })
-            .then((response) => {
-                this.props.getUsers(response.data.items);
-                this.props.changePreloaderStatus(false);
-            })
+        this.props.getUsersThunk(this.props.pageLimit, currentPage)
     }
 
     render() {
@@ -46,7 +25,11 @@ class UsersAPI extends React.Component {
                       onPageChanged={this.onPageChanged}
                       followUser={this.props.followUser}
                       unfollowUser={this.props.unfollowUser}
-                      isFetching={this.props.isFetching} />
+                      isFetching={this.props.isFetching}
+                      isFollowInProgress={this.props.isFollowInProgress}
+                      toggleFollowProgress={this.props.toggleFollowProgress}
+                      unfollowThunk={this.props.unfollowThunk}
+                      followThunk={this.props.followThunk}/>
     }
 }
 
@@ -56,9 +39,11 @@ let mapStateToProps = (state) => {
         totalUsers: state.usersPage.totalUsers,
         currentPage: state.usersPage.currentPage,
         pageLimit: state.usersPage.pageLimit,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        isFollowInProgress: state.usersPage.isFollowInProgress
     }
 }
-const UsersContainer = connect(mapStateToProps, {getUsers, followUser, unfollowUser, setCurrentPage, changePreloaderStatus})(UsersAPI)
+const UsersContainer = connect(mapStateToProps,
+    {setCurrentPage, getUsersThunk, followThunk, unfollowThunk})(UsersData)
 
 export default UsersContainer;

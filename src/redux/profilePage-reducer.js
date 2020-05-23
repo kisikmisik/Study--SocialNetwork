@@ -1,3 +1,5 @@
+import {profileAPI} from "../api/api";
+
 let initialState = {
     postsData: [
         {id: 1, message: "It's my first props!", likes: 20},
@@ -39,3 +41,10 @@ export default profileReducer;
 export const addNewPostActionCreator = (message) => ({ type: 'ADD-POST', message: message})
 export const changeAreaTextActionCreator = (message) => ({ type: 'CHANGE-POST-TEXT', message: message})
 export const setProfileInfo = (info) => ({ type: 'SET-PROFILE-INFO', info})
+
+export const getProfileInfoThunk = (userId) => {
+    return (dispatch) => {
+        profileAPI.getProfileInfo(userId).then(data => dispatch(setProfileInfo(data)))
+    }
+}
+

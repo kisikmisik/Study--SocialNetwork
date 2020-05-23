@@ -24,6 +24,9 @@
     border: none;
     align-self: center;
 }
+.followButton:disabled, followButton[disabled] {
+    background: gray;
+}
 .userLocation, .userStatus {
     color: gray;
     font-size: 14px;

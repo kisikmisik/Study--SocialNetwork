@@ -1,9 +1,12 @@
+import {manageSubscribeAPI, usersAPI} from "../api/api";
+
 let initialState = {
     users: [],
     totalUsers: 100,
     currentPage: 1,
     pageLimit: 10,
-    isFetching: false
+    isFetching: false,
+    isFollowInProgress: []
 }
 
 let usersReducer = (state = initialState, action) => {
@@ -50,6 +53,13 @@ let usersReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.currentStatus
             }
+        case 'TOGGLE-FOLLOW-PROGRESS':
+            return {
+                ...state,
+                isFollowInProgress: action.currentStatus ?
+                    [...state.isFollowInProgress, action.userID] :
+                    state.isFollowInProgress.filter(id => id !== action.userID)
+            }
         default:
             return state
     }
@@ -62,3 +72,42 @@ export const unfollowUser = (userId) => ({type: 'UNFOLLOW-USER', userId})
 export const setCurrentPage = (page) => ({type: 'SET-CURRENT-PAGE', page})
 // export const setTotalCountAC = (usersCount) => ({type: 'SET-TOTAL-COUNT', usersCount}) too many users
 export const changePreloaderStatus = (currentStatus) => ({type: 'CHANGE-PRELOADER-STATUS', currentStatus})
+export const toggleFollowProgress = (currentStatus, userID) => ({type: 'TOGGLE-FOLLOW-PROGRESS', currentStatus, userID})
+
+export const getUsersThunk = (pageLimit, currentPage) => {
+    return (dispatch) => {
+        dispatch(setCurrentPage(currentPage));
+       dispatch(changePreloaderStatus(true));
+        usersAPI.getUsers(pageLimit, currentPage).then(data => {
+               dispatch(changePreloaderStatus(false));
+                dispatch(getUsers(data.items));
+                // this.props.setTotalUsersCount(data.totalCount) -- too many users, can't deal with them
+            }
+        )
+    }
+}
+
+export const unfollowThunk = (userID) => {
+    return (dispatch) => {
+        dispatch(toggleFollowProgress(true, userID));
+        manageSubscribeAPI.unfollowUser(userID).then((data) => {
+            if (data.resultCode === 0) {
+                dispatch(unfollowUser(userID));
+            }
+            dispatch(toggleFollowProgress(false, userID));
+        })
+    }
+}
+
+export const followThunk = (userID) => {
+    return (dispatch) => {
+        dispatch(toggleFollowProgress(true, userID));
+        manageSubscribeAPI.followUser(userID).then((data) => {
+            if (data.resultCode === 0) {
+                dispatch(followUser(userID));
+            }
+            dispatch(toggleFollowProgress(false, userID));
+        })
+    }
+}
+
