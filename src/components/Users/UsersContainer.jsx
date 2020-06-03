@@ -6,6 +6,8 @@ import {
 } from "../../redux/usersPage-reducer";
 import Users from "./Users";
 import {connect} from "react-redux";
+import {compose} from "redux";
+import {withAuthHoc} from "../../hoc/withAuthHoc";
 
 
 class UsersData extends React.Component {
@@ -46,4 +48,7 @@ let mapStateToProps = (state) => {
 const UsersContainer = connect(mapStateToProps,
     {setCurrentPage, getUsersThunk, followThunk, unfollowThunk})(UsersData)
 
-export default UsersContainer;
+export default compose (
+    connect(mapStateToProps, {setCurrentPage, getUsersThunk, followThunk, unfollowThunk}),
+    withAuthHoc
+) (UsersData);

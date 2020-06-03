@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Info.module.css';
 import Preloader from "../../common/Preloader/Preloader";
 import profilePhotoMock from '../../../assets/img/nobody_profile_image.jpg'
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
 const Info = (props) => {
 
@@ -15,8 +16,9 @@ const Info = (props) => {
 
                 <div className={s.personal}>
                     <h2 className={s.name}>{props.profileInfo.fullName}</h2>
-                    <p className={s.status}>{props.profileInfo.aboutMe}</p>
+                    <ProfileStatus userStatus={props.userStatus} updateStatusThunk={props.updateStatusThunk}/>
                     <table className={s.table}>
+                        <tbody>
                         <tr>
                             <td>Job seeker:</td>
                             <td>{props.profileInfo.lookingForAJob ? <span>Yes</span> : <span>No</span>}</td>
@@ -49,6 +51,7 @@ const Info = (props) => {
                             <td>GitHub:</td>
                             <td>{props.profileInfo.contacts.github}</td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
             </section>

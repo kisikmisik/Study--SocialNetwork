@@ -13,7 +13,10 @@
 .status {
     color: gray;
 }
-
 .table td {
     padding: 6px
+}
+.status {
+    margin: 15px 0;
+    cursor: pointer;
 }

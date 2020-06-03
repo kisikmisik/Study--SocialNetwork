@@ -15,7 +15,7 @@ export const usersAPI = {
     }
 }
 export const authAPI = {
-    checkAuth() {
+    getAuthData() {
         return instance.get(`auth/me`).then(response => response.data)
     }
 }
@@ -32,6 +32,12 @@ export const manageSubscribeAPI = {
 export const profileAPI = {
     getProfileInfo(userId) {
         return instance.get(`profile/${userId}`).then(response => response.data)
+    },
+    updateUserStatus(statusText) {
+        return instance.put(`profile/status`, {status: statusText})
+    },
+    getUserStatus(userID) {
+        return instance.get(`profile/status/${userID}`).then(response => response.data)
     }
 }
 

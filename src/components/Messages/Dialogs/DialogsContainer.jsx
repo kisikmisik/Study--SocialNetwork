@@ -1,6 +1,8 @@
 import React from 'react';
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
+import {withAuthHoc} from "../../../hoc/withAuthHoc";
+import {compose} from "redux";
 
 const mapStateToProps = (state) => {
     return {
@@ -9,10 +11,12 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-
+// empty
     }
 }
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps) (Dialogs)
+export default compose (
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthHoc
+)(Dialogs)
 
-export default DialogsContainer;

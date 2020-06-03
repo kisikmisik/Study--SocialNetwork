@@ -12,8 +12,12 @@ let authReducer = (state = initialState, action) => {
         case 'SET-AUTH-DATA':
             return {
                 ...state,
-                ...action.data,
-                isAuthorized: true
+                ...action.data
+            }
+        case 'CHECK-AUTH-DATA':
+            return {
+                ...state,
+                isAuthorized: action.status
             }
         default:
             return state
@@ -24,9 +28,16 @@ let authReducer = (state = initialState, action) => {
 export default authReducer;
 
 export const setAuthData = (data) => ({type: 'SET-AUTH-DATA', data})
+export const checkAuthData = (status) => ({type: 'CHECK-AUTH-DATA', status})
 
-export const checkAuthThunk = () => {
+export const authThunk = () => {
     return (dispatch) => {
-        authAPI.checkAuth().then(data => dispatch(setAuthData(data.data)))
+        authAPI.getAuthData().then((data) => {
+            if (data.resultCode === 0) {
+                dispatch(checkAuthData(true))
+                dispatch(setAuthData(data.data))
+            }
+
+    })
     }
 }

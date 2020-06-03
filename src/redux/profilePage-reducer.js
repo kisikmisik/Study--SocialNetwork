@@ -6,7 +6,8 @@ let initialState = {
         {id: 2, message: "Wow! That's amazing!", likes: 12}
     ],
     postAreaText: '',
-    profileInfo: null
+    profileInfo: null,
+    userStatus: ''
 }
 
 let profileReducer = (state = initialState, action) => {
@@ -32,6 +33,11 @@ let profileReducer = (state = initialState, action) => {
                 ...state,
                 profileInfo: action.info
             }
+        case 'SET-STATUS-TEXT':
+            return {
+                ...state,
+                userStatus: action.statusText
+            }
         default:
             return state
     }
@@ -41,10 +47,29 @@ export default profileReducer;
 export const addNewPostActionCreator = (message) => ({ type: 'ADD-POST', message: message})
 export const changeAreaTextActionCreator = (message) => ({ type: 'CHANGE-POST-TEXT', message: message})
 export const setProfileInfo = (info) => ({ type: 'SET-PROFILE-INFO', info})
+export const setStatusText = (statusText) => ({ type: 'SET-STATUS-TEXT', statusText})
+
 
 export const getProfileInfoThunk = (userId) => {
     return (dispatch) => {
         profileAPI.getProfileInfo(userId).then(data => dispatch(setProfileInfo(data)))
+    }
+}
+export const updateStatusThunk = (statusText) => {
+    return (dispatch) => {
+        profileAPI.updateUserStatus(statusText).then((response) => {
+            if (response.data.resultCode === 0) {
+                return dispatch(setStatusText(statusText))
+            } else {
+                return alert("Too large status or server error")
+            }
+        })
+
+    }
+}
+export const getUserStatusThunk = (userID) => {
+    return (dispatch) => {
+        profileAPI.getUserStatus(userID).then(data => dispatch(setStatusText(data)))
     }
 }
 
