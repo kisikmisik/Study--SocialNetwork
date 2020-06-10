@@ -1,17 +1,17 @@
 let initialState = {
     messagesData: [
-        {id: 1, message: "Привет", classSet: "me"},
-        {id: 2, message: "Доров", classSet: "he"},
-        {id: 3, message: "Как дела?", classSet: "me"},
-        {id: 4, message: "Заебца", classSet: "he"},
-        {id: 5, message: "Сам как?", classSet: "he"}
+        {id: 11, message: "Привет", classSet: "me"},
+        {id: 22, message: "Доров", classSet: "he"},
+        {id: 33, message: "Как дела?", classSet: "me"},
+        {id: 44, message: "Заебца", classSet: "he"},
+        {id: 55, message: "Сам как?", classSet: "he"}
     ],
     peopleData: [
-        {id: 1, name: "Оленька"},
-        {id: 2, name: "Дима"},
-        {id: 3, name: "Лиза"},
-        {id: 4, name: "Сережа"},
-        {id: 5, name: "Аркаша"}
+        {id: 111, name: "Оленька"},
+        {id: 222, name: "Дима"},
+        {id: 333, name: "Лиза"},
+        {id: 444, name: "Сережа"},
+        {id: 555, name: "Аркаша"}
     ],
     currentMessage: ""
 }
@@ -39,5 +39,4 @@ let messagesReducer = (state = initialState, action) => {
 }
 export default messagesReducer;
 
-export const addMessageActionCreator = (message) => ({ type: 'ADD-MESSAGE', message})
-export const changeMessageActionCreator = (message) => ({ type: 'CHANGE-MESSAGE-TEXT', message })
+export const addNewMessage = (message) => ({ type: 'ADD-MESSAGE', message})

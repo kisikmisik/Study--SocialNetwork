@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 
 const Dialogs = (props) => {
     let peopleElements = props.peopleData.map(element =>
-        <li className={s.dialog}><NavLink to="messages/3">{element.name}</NavLink></li>);
+        <li key={element.id} className={s.dialog}><NavLink to="messages/3">{element.name}</NavLink></li>);
     return (
         <ul className={s.dialogs}>
             {peopleElements}

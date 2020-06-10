@@ -12,11 +12,6 @@ let initialState = {
 
 let profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'CHANGE-POST-TEXT':
-            return {
-                ...state,
-                postAreaText: action.message
-            }
         case 'ADD-POST':
             let newPost = {
                 id: 3,
@@ -44,8 +39,7 @@ let profileReducer = (state = initialState, action) => {
 }
 export default profileReducer;
 
-export const addNewPostActionCreator = (message) => ({ type: 'ADD-POST', message: message})
-export const changeAreaTextActionCreator = (message) => ({ type: 'CHANGE-POST-TEXT', message: message})
+export const addNewPost = (message) => ({ type: 'ADD-POST', message: message})
 export const setProfileInfo = (info) => ({ type: 'SET-PROFILE-INFO', info})
 export const setStatusText = (statusText) => ({ type: 'SET-STATUS-TEXT', statusText})
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {addMessageActionCreator, changeMessageActionCreator} from "../../../redux/messagesPage-reducer";
+import {addNewMessage} from "../../../redux/messagesPage-reducer";
 import Conversation from "./Conversation";
 import {connect} from "react-redux";
 
@@ -10,17 +10,7 @@ const mapStateToProps = (state) => {
         currentMessage: state.messagesPage.currentMessage
     }
 }
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onChangeMessage: (evt) => {
-            dispatch(changeMessageActionCreator(evt));
-        },
-        addMessage: (currentValue) => {
-            dispatch(addMessageActionCreator(currentValue));
-        }
-    }
-}
-const ConversationContainer = connect(mapStateToProps, mapDispatchToProps) (Conversation)
+const ConversationContainer = connect(mapStateToProps, {addNewMessage}) (Conversation)
 
 export default ConversationContainer;
 

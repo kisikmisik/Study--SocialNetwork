@@ -1,0 +1,20 @@
+.fieldWrapper {
+    position: relative;
+}
+
+.fieldWrapper .error {
+    border: 2px solid red;
+}
+
+.errorMessage {
+    position: absolute;
+    left: -200px;
+    display: block;
+    right: 150px;
+    width: 200px;
+    border-radius: 5px;
+    height: 50px;
+    color: white;
+    background: red;
+    top: 10px;
+}

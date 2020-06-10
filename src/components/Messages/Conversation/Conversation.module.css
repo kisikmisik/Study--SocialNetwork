@@ -20,20 +20,20 @@
 }
 
 .inputWrapper {
-    position: relative;
+    display: flex;
 }
 
 .inputWrapper button {
-    position: absolute;
     height: 100%;
-    right: 30px;
+    right: 10px;
     border: none;
-    background: transparent;
+    background: #285473;
+    color: white;
 }
 
-.input {
-    width: 500px;
-    height: 30px;
+.inputWrapper textarea {
+    width: 400px;
+    height: 60px;
     align-self: center;
     border: none;
     background: #edeef0;

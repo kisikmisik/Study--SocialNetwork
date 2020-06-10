@@ -2,11 +2,18 @@ import React from "react";
 import s from './../Info.module.css';
 
 class ProfileStatus extends React.Component {
-
     state = {
         editMode: false,
-        statusText: this.props.userStatus
+        userStatus: this.props.userStatus
     }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.editMode !== this.state.editMode) {
+            this.setState({
+              userStatus: this.props.userStatus
+            })
+        }
+    }
+
     activateEditMode = () => {
         this.setState({
             editMode: true
@@ -16,24 +23,23 @@ class ProfileStatus extends React.Component {
         this.setState({
             editMode: false
         })
-        this.props.updateStatusThunk(this.state.statusText)
+        this.props.updateStatusThunk(this.state.userStatus)
     }
 
     onChangeInput = (e) => {
         this.setState({
-            statusText: e.currentTarget.value
+            userStatus: e.currentTarget.value
         })
 
     }
 
     render() {
-        // console.log(this.state.statusText)
         return (
             <div className={s.status} onClick={this.activateEditMode} onBlur={this.deactivateEditMode}>
                 {
                     this.state.editMode ?
                     <input onChange={this.onChangeInput} autoFocus={true} type="text"
-                           value={this.state.statusText}/> :
+                           value={this.state.userStatus}/> :
                     <span className={s.statusText}>{this.props.userStatus ? this.props.userStatus : "No status"}</span>
                 }
             </div>

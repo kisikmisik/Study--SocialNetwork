@@ -10,8 +10,10 @@
     border: none;
     width: 600px;
     background: #edeef0;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    resize: none;
 }
 
 .wrapper button {
@@ -21,6 +23,5 @@
     font-size: 20px;
     background: #4a76a8;
     color: white;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-radius: 5px;
 }

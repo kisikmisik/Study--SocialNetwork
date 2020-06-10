@@ -25,7 +25,7 @@ let Users = (props) => {
                     <div className={s.userWrapper}>
                         <p className={s.userName}>{u.name}</p>
                         <p className={s.userLocation}>{"u.location"}</p>
-                        <p className={s.userStatus}>{"u.status"}</p>
+                        <p className={s.userStatus}>{u.status}</p>
                     </div>
                     {u.followed ?
                         <button disabled={props.isFollowInProgress.some(id => id === u.id)} onClick={() => {

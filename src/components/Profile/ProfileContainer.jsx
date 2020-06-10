@@ -1,7 +1,12 @@
 import React from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {getProfileInfoThunk, updateStatusThunk, getUserStatusThunk} from "../../redux/profilePage-reducer";
+import {
+    getProfileInfoThunk,
+    updateStatusThunk,
+    getUserStatusThunk,
+    addNewPost
+} from "../../redux/profilePage-reducer";
 import {withRouter} from "react-router-dom";
 import {withAuthHoc} from "../../hoc/withAuthHoc";
 import {compose} from "redux";
@@ -18,7 +23,8 @@ class ProfileAPI extends React.Component { // first container
     render() {
         return <Profile profileInfo={this.props.profileInfo}
                         userStatus={this.props.userStatus}
-                        updateStatusThunk={this.props.updateStatusThunk}/>
+                        updateStatusThunk={this.props.updateStatusThunk}
+                        addNewPost={this.props.addNewPost}/>
     }
 }
 
@@ -31,7 +37,7 @@ let mapStateToProps = (state) => {
 };
 
 export default compose (
-    connect(mapStateToProps, {getProfileInfoThunk, updateStatusThunk, getUserStatusThunk}),
+    connect(mapStateToProps, {getProfileInfoThunk, updateStatusThunk, getUserStatusThunk, addNewPost}),
     withAuthHoc,
     withRouter
 ) (ProfileAPI)
