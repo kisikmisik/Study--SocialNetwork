@@ -3,6 +3,9 @@ import s from './Login.module.css'
 import {Field, reduxForm} from "redux-form";
 import {required} from "../../utilities/validators";
 import {Input} from "../common/FormsControls/FormsControls";
+import {loginThunk} from "../../redux/auth-reducer";
+import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
 
 let LoginForm = (props) => {
     return (
@@ -22,8 +25,10 @@ let LoginReduxForm = reduxForm({form: 'login'}) (LoginForm)
 
 let Login = (props) => {
     const onSubmit = (formData) => {
-        console.log(formData)
+        props.loginThunk(formData);
     }
+
+    if (props.isAuthorized) return <Redirect to={'/profile'}></Redirect>
     return (
         <div>
             <h1>Login</h1>
@@ -31,4 +36,10 @@ let Login = (props) => {
         </div>
     )
 }
-export default Login;
+
+let mapStateToProps = (state) => ({
+    isAuthorized: state.authReducer.isAuthorized
+});
+
+let LoginWithAuth = connect(mapStateToProps, {loginThunk}) (Login)
+export default LoginWithAuth;

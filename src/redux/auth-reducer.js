@@ -38,6 +38,33 @@ export const authThunk = () => {
                 dispatch(setAuthData(data.data))
             }
 
-    })
+        })
+    }
+}
+
+export const loginThunk = (loginData) => {
+    return (dispatch) => {
+        authAPI.login(loginData).then(data => {
+            if (data.resultCode === 0) {
+                authAPI.getAuthData().then((data) => {
+                    if (data.resultCode === 0) {
+                        dispatch(checkAuthData(true))
+                        dispatch(setAuthData(data.data))
+                    }
+
+                })
+            } else {
+
+            }
+        })
+    }
+}
+
+export const logout = () => {
+    return (dispatch) => {
+        authAPI.logout().then(() => {
+            dispatch(checkAuthData(false))
+            dispatch(setAuthData({id:null, email:null, login:null}))
+        })
     }
 }

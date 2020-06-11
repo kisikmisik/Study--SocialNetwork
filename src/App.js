@@ -8,7 +8,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
+import LoginWithAuth from "./components/Login/Login";
 import NewsContainer from "./components/News/NewsContainer";
 import SettingsContainer from "./components/Settings/SettingsContainer";
 
@@ -18,7 +18,7 @@ function App(props) {
             <HeaderContainer/>
             <div className="container">
                 <NavBar/>
-                <Route path='/login' component={Login}/>
+                <Route path='/login' component={LoginWithAuth}/>
                 <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
                 <Route path='/messages' render={() => <Messages/>}/>
                 <Route path='/users' render={() => <UsersContainer/>}/>

@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Header.module.css';
 
 const Header = (props) => {
+    // debugger
     return (
         <header className={s.header}>
             <div className={s.wrapper}>
@@ -9,7 +10,11 @@ const Header = (props) => {
                  height="50" alt="logo"/>
 
              {props.authData.isAuthorized ?
-                 <p className={s.login}>{props.authData.login}</p> : <p className={s.login}>Login</p>}
+                 <div>
+                     <p className={s.login}>{props.authData.login}</p>
+                     <button onClick={props.logout}>Logout</button>
+                 </div>
+                 : <p className={s.login}>Login</p>}
             </div>
         </header>
     );
