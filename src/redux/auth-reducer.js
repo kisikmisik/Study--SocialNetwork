@@ -1,4 +1,5 @@
 import {authAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 let initialState = {
     id: null,
@@ -30,16 +31,13 @@ export default authReducer;
 export const setAuthData = (data) => ({type: 'SET-AUTH-DATA', data})
 export const checkAuthData = (status) => ({type: 'CHECK-AUTH-DATA', status})
 
-export const authThunk = () => {
-    return (dispatch) => {
-        authAPI.getAuthData().then((data) => {
+export const authThunk = () => (dispatch) => {
+        return authAPI.getAuthData().then((data) => {
             if (data.resultCode === 0) {
                 dispatch(checkAuthData(true))
                 dispatch(setAuthData(data.data))
             }
-
         })
-    }
 }
 
 export const loginThunk = (loginData) => {
@@ -51,10 +49,10 @@ export const loginThunk = (loginData) => {
                         dispatch(checkAuthData(true))
                         dispatch(setAuthData(data.data))
                     }
-
                 })
             } else {
-
+                console.log(data)
+                dispatch(stopSubmit("login", {_error: data.messages[0] || "Authentication error"}))
             }
         })
     }

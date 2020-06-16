@@ -15,7 +15,7 @@ class ProfileAPI extends React.Component { // first container
     componentDidMount() {
         let userId = this.props.match.params.userId;
         if (!userId) {
-            userId = 8001;
+            userId = this.props.authorizedID;
         }
         this.props.getUserStatusThunk(userId)
         this.props.getProfileInfoThunk(userId)
@@ -32,7 +32,8 @@ let mapStateToProps = (state) => {
     return {
         profileInfo: state.profilePage.profileInfo,
         isAuth: state.authReducer.isAuthorized,
-        userStatus: state.profilePage.userStatus
+        userStatus: state.profilePage.userStatus,
+        authorizedID: state.authReducer.id
     }
 };
 

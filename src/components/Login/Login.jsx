@@ -17,6 +17,7 @@ let LoginForm = (props) => {
                 <span>remember me</span>
             </label>
             <button className={s.formSubmit}>Submit</button>
+            {props.error && <p className={s.formError}>{props.error}</p>}
         </form>
         )
 }
