@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Info.module.css';
 import Preloader from "../../common/Preloader/Preloader";
 import profilePhotoMock from '../../../assets/img/nobody_profile_image.jpg'
-import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import ProfileStatus from "./ProfileStatus/ProfileStatus2";
 
 const Info = (props) => {
 
