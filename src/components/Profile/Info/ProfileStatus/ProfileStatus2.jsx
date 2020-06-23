@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import s from './../Info.module.css';
 
 let ProfileStatus = (props) => {
@@ -18,6 +18,8 @@ let ProfileStatus = (props) => {
     let onChangeInput = (e) => {
         changeUserStatus(e.currentTarget.value);
     }
+
+    useEffect(() => {changeUserStatus(props.userStatus)}, [props.userStatus])
 
 
     return (
