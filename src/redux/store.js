@@ -1,3 +1,5 @@
+// this is manual version of store, used to show how store works
+
 import messagesReducer from "./messagesPage-reducer";
 import profileReducer from "./profilePage-reducer";
 import navbarReducer from "./navBar-reducer";

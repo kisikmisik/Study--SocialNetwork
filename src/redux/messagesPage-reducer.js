@@ -1,3 +1,5 @@
+const ADD_MESSAGE = 'messagesPage-reducer/ADD-MESSAGE'
+
 let initialState = {
     messagesData: [
         {id: 11, message: "Привет", classSet: "me"},
@@ -16,14 +18,8 @@ let initialState = {
     currentMessage: ""
 }
 let messagesReducer = (state = initialState, action) => {
-
     switch (action.type) {
-        case 'CHANGE-MESSAGE-TEXT':
-            return {
-                ...state,
-                currentMessage: action.message
-            }
-        case 'ADD-MESSAGE':
+        case ADD_MESSAGE:
             let newMessage = {
                 id: 1,
                 message: action.message
@@ -39,4 +35,4 @@ let messagesReducer = (state = initialState, action) => {
 }
 export default messagesReducer;
 
-export const addNewMessage = (message) => ({ type: 'ADD-MESSAGE', message})
+export const addNewMessage = (message) => ({ type: ADD_MESSAGE, message})

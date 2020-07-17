@@ -1,4 +1,4 @@
-import usersReducer, {followUser, setCurrentPage} from "./usersPage-reducer";
+import usersReducer, {followUser, setCurrentPage} from "../redux/usersPage-reducer";
 
 let state = {
     users: [{id: 0, name: "Vitya", followed: false}],

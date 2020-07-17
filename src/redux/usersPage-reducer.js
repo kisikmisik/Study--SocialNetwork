@@ -1,17 +1,27 @@
 import {manageSubscribeAPI, usersAPI} from "../api/api";
 
+const FOLLOW_USER = 'userPage-reducer/FOLLOW-USER'
+const UFOLLOW_USER = 'userPage-reducer/UNFOLLOW-USER'
+const LOAD_USERS = 'userPage-reducer/LOAD-USERS'
+const SET_CURRENT_PAGE = 'userPage-reducer/SET-CURRENT-PAGE'
+const SET_TOTAL_COUNT = 'userPage-reducer/SET-TOTAL-COUNT'
+const CHANGE_PRELOADER_STATUS = 'userPage-reducer/CHANGE-PRELOADER-STATUS'
+const TOGGLE_FOLLOW_PROGRESS = 'userPage-reducer/TOGGLE-FOLLOW-PROGRESS'
+
+
 let initialState = {
     users: [],
-    totalUsers: 100,
+    totalUsers: 0,
     currentPage: 1,
     pageLimit: 10,
     isFetching: false,
     isFollowInProgress: []
+
 }
 
 let usersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'FOLLOW-USER':
+        case FOLLOW_USER:
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -22,7 +32,7 @@ let usersReducer = (state = initialState, action) => {
                     }
                 })
             }
-        case 'UNFOLLOW-USER':
+        case UFOLLOW_USER:
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -33,27 +43,27 @@ let usersReducer = (state = initialState, action) => {
                     }
                 })
             }
-        case 'LOAD-USERS':
-            return  {
+        case LOAD_USERS:
+            return {
                 ...state,
                 users: action.users
             }
-        case 'SET-CURRENT-PAGE':
+        case SET_CURRENT_PAGE:
             return {
                 ...state,
                 currentPage: action.page
             }
-        case 'SET-TOTAL-COUNT':
+        case SET_TOTAL_COUNT:
             return {
                 ...state,
                 totalUsers: action.usersCount
             }
-        case 'CHANGE-PRELOADER-STATUS':
+        case CHANGE_PRELOADER_STATUS:
             return {
                 ...state,
                 isFetching: action.currentStatus
             }
-        case 'TOGGLE-FOLLOW-PROGRESS':
+        case TOGGLE_FOLLOW_PROGRESS:
             return {
                 ...state,
                 isFollowInProgress: action.currentStatus ?
@@ -66,48 +76,56 @@ let usersReducer = (state = initialState, action) => {
 }
 export default usersReducer;
 
-export const getUsers = (usersData) => ({type: 'LOAD-USERS', users: usersData})
-export const followUser = (userId) => ({type: 'FOLLOW-USER', userId})
-export const unfollowUser = (userId) => ({type: 'UNFOLLOW-USER', userId})
-export const setCurrentPage = (page) => ({type: 'SET-CURRENT-PAGE', page})
-// export const setTotalCountAC = (usersCount) => ({type: 'SET-TOTAL-COUNT', usersCount}) too many users
-export const changePreloaderStatus = (currentStatus) => ({type: 'CHANGE-PRELOADER-STATUS', currentStatus})
-export const toggleFollowProgress = (currentStatus, userID) => ({type: 'TOGGLE-FOLLOW-PROGRESS', currentStatus, userID})
+export const getUsers = (usersData) => ({type: LOAD_USERS, users: usersData})
+export const followUser = (userId) => ({type: FOLLOW_USER, userId})
+export const unfollowUser = (userId) => ({type: UFOLLOW_USER, userId})
+export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page})
+export const setTotalCount = (usersCount) => ({type: SET_TOTAL_COUNT, usersCount})
+export const changePreloaderStatus = (currentStatus) => ({type: CHANGE_PRELOADER_STATUS, currentStatus})
+export const toggleFollowProgress = (currentStatus, userID) => ({type: TOGGLE_FOLLOW_PROGRESS, currentStatus, userID})
 
 export const getUsersThunk = (pageLimit, currentPage) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setCurrentPage(currentPage));
-       dispatch(changePreloaderStatus(true));
-        usersAPI.getUsers(pageLimit, currentPage).then(data => {
-               dispatch(changePreloaderStatus(false));
-                dispatch(getUsers(data.items));
-                // this.props.setTotalUsersCount(data.totalCount) -- too many users, can't deal with them
-            }
-        )
+        dispatch(changePreloaderStatus(true));
+
+        let data = await usersAPI.getUsers(pageLimit, currentPage);
+        dispatch(changePreloaderStatus(false));
+        dispatch(getUsers(data.items));
+        dispatch(setTotalCount(data.totalCount));
     }
 }
 
+let followToggle = async (requestAction, dispatch, userID) => {
+    dispatch(toggleFollowProgress(true, userID));
+    let data = await manageSubscribeAPI.requestAction;
+    if (data.resultCode === 0) {
+        dispatch(requestAction);
+    }
+    dispatch(toggleFollowProgress(false, userID));
+}
 export const unfollowThunk = (userID) => {
-    return (dispatch) => {
-        dispatch(toggleFollowProgress(true, userID));
-        manageSubscribeAPI.unfollowUser(userID).then((data) => {
+    let requestAction = unfollowUser(userID)
+    return async (dispatch) => {
+            dispatch(toggleFollowProgress(true, userID));
+            let data = await manageSubscribeAPI.unfollowUser(userID);
             if (data.resultCode === 0) {
                 dispatch(unfollowUser(userID));
             }
             dispatch(toggleFollowProgress(false, userID));
-        })
     }
 }
 
 export const followThunk = (userID) => {
-    return (dispatch) => {
+    let requestAction = followUser(userID)
+    return async (dispatch) => {
         dispatch(toggleFollowProgress(true, userID));
-        manageSubscribeAPI.followUser(userID).then((data) => {
-            if (data.resultCode === 0) {
-                dispatch(followUser(userID));
-            }
-            dispatch(toggleFollowProgress(false, userID));
-        })
+
+        let data = await manageSubscribeAPI.followUser(userID);
+        if (data.resultCode === 0) {
+            dispatch(followUser(userID));
+        }
+        dispatch(toggleFollowProgress(false, userID));
     }
 }
 

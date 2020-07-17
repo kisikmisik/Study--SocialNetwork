@@ -1,6 +1,6 @@
-import {authThunk} from "./auth-reducer";
-import {getProfileInfoThunk} from "./profilePage-reducer";
-
+import {authAPI} from "../api/api";
+import {checkAuthData, setAuthData} from "./auth-reducer";
+const UPDATE_AUTHORIZATION = 'appReducer/UPDATE-AUTHORIZATION'
 
 let initialState = {
     authorized: false
@@ -8,7 +8,7 @@ let initialState = {
 
 let appReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'UPDATE-AUTHORIZATION':
+        case UPDATE_AUTHORIZATION:
             return {
                 ...state,
                 authorized: action.status
@@ -18,12 +18,18 @@ let appReducer = (state = initialState, action) => {
     }
 
 }
-export let updateAuthorization = (status) => ({type: 'UPDATE-AUTHORIZATION', status})
+export let updateAuthorization = (status) => ({type: UPDATE_AUTHORIZATION, status})
 
 export let initializeThunk = () => {
-    return (dispatch) => {
-        let authPromise = dispatch(authThunk())
-        authPromise.then(() => {dispatch(updateAuthorization(true))}).catch((error) => console.log(error))
+    return async (dispatch) => {
+        let authData = await authAPI.getAuthData()
+        if (authData.resultCode === 0) {
+            dispatch(setAuthData(authData.data))
+            dispatch(checkAuthData(true))
+        }
+        dispatch(updateAuthorization(true))
+
+
     }
 }
 

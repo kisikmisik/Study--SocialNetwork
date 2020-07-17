@@ -26,8 +26,10 @@ let mapStateToPropsRedirect = (state) => ({
 export const withAuthHoc = (Component) => {
     let wrapperContainer = (props) => {
         if (props.isAuth === false) {
+            // debugger;
             return <Redirect to='/login'/>
         } else {
+            // debugger;
             return <Component {...props}/>
         }
     }

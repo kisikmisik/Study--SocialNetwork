@@ -49,6 +49,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-let AppWithCheck = connect(mapStateToProps, {initializeThunk}) (App)
+let AppWithCheck = connect(mapStateToProps, {initializeThunk})(App)
 
 export default AppWithCheck;

@@ -1,4 +1,4 @@
-import appReducer, {updateAuthorization} from "./appReducer";
+import appReducer, {updateAuthorization} from "../redux/appReducer";
 
 
 it('authorized status should change', () => {

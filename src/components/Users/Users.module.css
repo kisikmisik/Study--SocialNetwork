@@ -2,6 +2,13 @@
     background: white;
     border-radius: 5px;
 }
+
+.paginatorWrapper {
+    display: flex;
+}
+.paginatorWrapper button {
+    height: 50px;
+}
 .users {
    list-style: none;
     padding-left: 40px;

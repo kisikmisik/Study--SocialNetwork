@@ -11,11 +11,12 @@ import {withRouter} from "react-router-dom";
 import {withAuthHoc} from "../../hoc/withAuthHoc";
 import {compose} from "redux";
 
-class ProfileAPI extends React.Component { // first container
+class ProfileAPI extends React.Component {
     componentDidMount() {
         let userId = this.props.match.params.userId;
         if (!userId) {
-            userId = this.props.authorizedID;
+            // userId = this.props.authorizedID;
+            userId = 8001;
         }
         this.props.getUserStatusThunk(userId)
         this.props.getProfileInfoThunk(userId)
