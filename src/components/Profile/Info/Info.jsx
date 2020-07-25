@@ -3,16 +3,23 @@ import s from './Info.module.css';
 import Preloader from "../../common/Preloader/Preloader";
 import profilePhotoMock from '../../../assets/img/nobody_profile_image.jpg'
 import ProfileStatus from "./ProfileStatus/ProfileStatus2";
+import ImageInput from "./ImageInput/ImageInput";
 
 const Info = (props) => {
-
     if (!props.profileInfo) {
         return <Preloader/>
     } else {
+
+        const onSubmit = (formData) => {
+            console.log(formData)
+        }
         return (
             <section className={s.info}>
-                <img src={props.profileInfo.photos.large ? props.profileInfo.photos.large : profilePhotoMock}
-                     height="300" alt="profile pic" className={s.avatar}/>
+                <div className={s.imageWrapper}>
+                    <img src={props.profileInfo.photos.large ? props.profileInfo.photos.large : profilePhotoMock}
+                         height="300" alt="profile pic" className={s.avatar}/>
+                    {props.isProfileYours ? <ImageInput onSubmit={onSubmit}/> : <span></span>}
+                </div>
 
                 <div className={s.personal}>
                     <h2 className={s.name}>{props.profileInfo.fullName}</h2>

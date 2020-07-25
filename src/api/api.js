@@ -44,6 +44,9 @@ export const profileAPI = {
     },
     getUserStatus(userID) {
         return instance.get(`profile/status/${userID}`).then(response => response.data)
+    },
+    changeProfilePhoto(photoFile) {
+        return instance.put('profile/photo', photoFile, {headers: {'Content-type': 'multipart/form-data'}}).then(response => response.data)
     }
 }
 
