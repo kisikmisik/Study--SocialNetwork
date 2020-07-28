@@ -6,14 +6,14 @@ import {
     updateStatusThunk,
     getUserStatusThunk,
     addNewPost,
-    setIsProfileYours
+    setIsProfileYours, saveProfileDataThunk
 } from "../../redux/profilePage-reducer";
 import {withRouter} from "react-router-dom";
 import {withAuthHoc} from "../../hoc/withAuthHoc";
 import {compose} from "redux";
 
 class ProfileAPI extends React.Component {
-    componentDidMount() {
+    checkProfile () {
         let userId = this.props.match.params.userId;
         if (!userId) {
             userId = this.props.authorizedId;
@@ -28,13 +28,21 @@ class ProfileAPI extends React.Component {
             }
         })
     }
+    componentDidMount() {
+        this.checkProfile()
+    }
+
+    componentDidUpdate() {
+        this.checkProfile()
+    }
     render() {
         return <Profile profileInfo={this.props.profileInfo}
                         userStatus={this.props.userStatus}
                         updateStatusThunk={this.props.updateStatusThunk}
                         addNewPost={this.props.addNewPost}
                         authorizedId={this.props.authorizedId}
-                        isProfileYours={this.props.isProfileYours} />
+                        isProfileYours={this.props.isProfileYours}
+                        saveProfileDataThunk={this.props.saveProfileDataThunk} />
     }
 }
 
@@ -49,7 +57,7 @@ let mapStateToProps = (state) => {
 };
 
 export default compose (
-    connect(mapStateToProps, {getProfileInfoThunk, updateStatusThunk, getUserStatusThunk, addNewPost, setIsProfileYours}),
+    connect(mapStateToProps, {saveProfileDataThunk, getProfileInfoThunk, updateStatusThunk, getUserStatusThunk, addNewPost, setIsProfileYours}),
     withAuthHoc,
     withRouter
 ) (ProfileAPI)

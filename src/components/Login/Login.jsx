@@ -16,6 +16,8 @@ let LoginForm = (props) => {
                 <Field component='input' type='checkbox' name='rememberMe'/>
                 <span>remember me</span>
             </label>
+            {props.captchaUrl && <img src={props.captchaUrl} alt='captcha Image'/>}
+            {props.captchaUrl && <Field component={Input} type='text' name={'captcha'}/>}
             <button className={s.formSubmit}>Submit</button>
             {props.error && <p className={s.formError}>{props.error}</p>}
         </form>
@@ -33,13 +35,14 @@ let Login = (props) => {
     return (
         <div>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm captchaUrl={props.captchaUrl} onSubmit={onSubmit}/>
         </div>
     )
 }
 
 let mapStateToProps = (state) => ({
-    isAuthorized: state.authReducer.isAuthorized
+    isAuthorized: state.authReducer.isAuthorized,
+    captchaUrl: state.authReducer.captchaUrl
 });
 
 let LoginWithAuth = connect(mapStateToProps, {loginThunk}) (Login)

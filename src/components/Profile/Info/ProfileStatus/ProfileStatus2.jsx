@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
-import s from './../Info.module.css';
+import s from './../PersonalInfo/PersonalInfo.module.css';
 // this is how we use fc instead of class (hooks)
 let ProfileStatus = (props) => {
-
     let [editMode, changeEditMode] = useState(false);
     let [userStatus, changeUserStatus] = useState(props.userStatus)
 

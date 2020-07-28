@@ -7,6 +7,11 @@ let instance = axios.create({
         "API-KEY": "62c59592-bd1c-491a-b1d5-806b63a3cad6"
     }
 })
+export const securityAPI = {
+    getCaptcha() {
+        return instance.get('security/get-captcha-url').then(response => response.data)
+    }
+}
 
 export const usersAPI = {
     getUsers(pageLimit, currentPage) {
@@ -47,6 +52,9 @@ export const profileAPI = {
     },
     changeProfilePhoto(photoFile) {
         return instance.put('profile/photo', photoFile, {headers: {'Content-type': 'multipart/form-data'}}).then(response => response.data)
+    },
+    saveProfileData(dataObject) {
+        return instance.put('profile', dataObject).then(response => response.data)
     }
 }
 

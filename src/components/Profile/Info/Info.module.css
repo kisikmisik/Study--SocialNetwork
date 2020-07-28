@@ -1,22 +1,13 @@
 .info {
     display: flex;
     margin-bottom: 80px;
+    flex-wrap: wrap;
 }
 .avatar {
     margin-right: 50px;
 }
-.name {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 26px;
-}
-.status {
-    color: gray;
-}
-.table td {
-    padding: 6px
-}
-.status {
-    margin: 15px 0;
-    cursor: pointer;
+
+.editButton {
+    height: 40px;
+    width: 150px;
 }
