@@ -10,21 +10,25 @@ import {Redirect} from "react-router-dom";
 let LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={s.form}>
-            <Field component={Input} name='email' type='email' placeholder='email' className={s.formLogin} validate={[required]}/>
-            <Field component={Input} name='password' type='password' placeholder='password' validate={[required]} className={s.formPassword}/>
-            <label>
-                <Field component='input' type='checkbox' name='rememberMe'/>
-                <span>remember me</span>
-            </label>
+            <Field component={Input} name='email' type='email' placeholder='email'
+                   className={s.formLogin} validate={[required]}/>
+            <Field component={Input} name='password' type='password'
+                   placeholder='password' validate={[required]} className={s.formPassword}/>
+            <div className={s.loginBottom}>
+                <button className={s.formSubmit}>Log in</button>
+                <label className={s.rememberMeWrapper}>
+                    <Field component='input' type='checkbox' name='rememberMe' className={s.checkboxInput}/>
+                    <span>remember me</span>
+                </label>
+            </div>
             {props.captchaUrl && <img src={props.captchaUrl} alt='captcha Image'/>}
             {props.captchaUrl && <Field component={Input} type='text' name={'captcha'}/>}
-            <button className={s.formSubmit}>Submit</button>
             {props.error && <p className={s.formError}>{props.error}</p>}
         </form>
-        )
+    )
 }
 
-let LoginReduxForm = reduxForm({form: 'login'}) (LoginForm)
+let LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 let Login = (props) => {
     const onSubmit = (formData) => {
@@ -33,8 +37,8 @@ let Login = (props) => {
 
     if (props.isAuthorized) return <Redirect to={'/profile'}></Redirect>
     return (
-        <div>
-            <h1>Login</h1>
+        <div className={s.loginWrapper}>
+            <h1 className='visually-hidden'>User Login</h1>
             <LoginReduxForm captchaUrl={props.captchaUrl} onSubmit={onSubmit}/>
         </div>
     )
@@ -45,5 +49,5 @@ let mapStateToProps = (state) => ({
     captchaUrl: state.authReducer.captchaUrl
 });
 
-let LoginWithAuth = connect(mapStateToProps, {loginThunk}) (Login)
+let LoginWithAuth = connect(mapStateToProps, {loginThunk})(Login)
 export default LoginWithAuth;

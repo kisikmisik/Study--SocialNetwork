@@ -7,16 +7,16 @@
     list-style: none;
 }
 
-.item {
-    margin-bottom: 15px;
-}
-
 .item a {
-    font-size: 20 px;
+    display: block;
+    width: 160px;
+    height: 25px;
+    padding: 5px 10px;
+    font-size: 16px;
     color: #285473;
     text-decoration: none;
 }
 
-.active {
-    font-size: 30px;
+.item a:hover {
+    background: #d3d9de;
 }

@@ -3,7 +3,7 @@ import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import Messages from "./components/Messages/Messages";
-import {Route} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import Music from "./components/Music/Music";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -13,6 +13,7 @@ import SettingsContainer from "./components/Settings/SettingsContainer";
 import Preloader from "./components/common/Preloader/Preloader";
 import {connect} from "react-redux";
 import {initializeThunk} from "./redux/appReducer";
+import ErrorPage from "./components/common/ErrorPage/ErrorPage";
 
 class App extends React.Component {
     componentDidMount() {
@@ -26,13 +27,17 @@ class App extends React.Component {
                     <HeaderContainer/>
                     <div className="container">
                         <NavBar/>
-                        <Route path='/login' component={LoginWithAuth}/>
-                        <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-                        <Route path='/messages' render={() => <Messages/>}/>
-                        <Route path='/users' render={() => <UsersContainer/>}/>
-                        <Route path='/news' component={NewsContainer}/>
-                        <Route path='/music' component={Music}/>
-                        <Route path='/settings' component={SettingsContainer}/>
+                        <Switch>
+                            <Route path='/login' component={LoginWithAuth}/>
+                            <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
+                            <Route path='/messages' render={() => <Messages/>}/>
+                            <Route path='/users' render={() => <UsersContainer/>}/>
+                            <Route path='/news' component={NewsContainer}/>
+                            <Route path='/music' component={Music}/>
+                            <Route path='/settings' component={SettingsContainer}/>
+                            <Redirect from='/' to={'/profile'} exact/>
+                            <Route path='*' component={ErrorPage}/>
+                        </Switch>
                     </div>
                 </div>
             );
