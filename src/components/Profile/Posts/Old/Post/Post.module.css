@@ -1,15 +1,36 @@
 .post {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     align-items: center;
-    margin-bottom: 30px;
-    font-size: 20px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    position: relative;
+    background: white;
+    border-radius: 5px;
+    padding: 30px 15px;
+    box-sizing: border-box;
 }
-
-.post img {
+.postImage{
     margin-right: 15px;
+    border-radius: 50%;
 }
-
 .message {
     margin-right: 15px;
+}
+.likes {
+    font-size: 14px;
+    display: flex;
+    position: absolute;
+    left: 15px;
+    bottom: 0;
+    cursor: pointer;
+}
+.likes img {
+    margin-right: 5px;
+}
+.labelWrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
 }

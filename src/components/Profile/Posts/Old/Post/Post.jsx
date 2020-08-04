@@ -1,15 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from './Post.module.css';
+import likeIcon from './../../../../../assets/img/heart.svg'
+import likedLikeIcon from './../../../../../assets/img/heart-blue.svg'
 
 const Post = (props) => {
     return (
         <div className={s.post}>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/LACMTA_Circle_Gold_Line.svg/1200px-LACMTA_Circle_Gold_Line.svg.png"
-             alt="avatar" height="30"/>
+            <div className={s.labelWrapper}>
+                <img src={props.photo}
+                     alt="avatar" height="40" className={s.postImage}/>
+                <span className={s.profileName}>{props.name}</span>
+            </div>
             <p className={s.message}>{props.message}</p>
-            <p className={s.likes}>likes: {props.likes}</p>
+            <p className={s.likes} onClick={props.likeToggle}>
+                {props.isLiked ? <img src={likedLikeIcon} alt="likes count" width='18px'/>
+                : <img src={likeIcon} alt="likes count" width='18px'/>}
+                {props.isLiked ? props.likes + 1 : props.likes}
+            </p>
         </div>
     )
 }
 
-export default Post;
+const PostContainer = (props) => {
+    let [isLiked, toggleIsLiked] = useState(false);
+
+    let likeToggle = (e) => {
+        if (isLiked === false) {
+            toggleIsLiked(true)
+        } else {
+            toggleIsLiked(false)
+        }
+    }
+    return <Post {...props} likeToggle={likeToggle} isLiked={isLiked}/>
+}
+
+export default PostContainer;

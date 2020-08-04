@@ -4,16 +4,32 @@
     width: 100%;
     z-index: 100;
 }
+
 .wrapper {
-  max-width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
-  padding: 0 15px;
+    padding: 0 15px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    box-sizing: border-box;
 }
+
 .header img {
-  margin: 5px 0;
+    margin: 5px 0;
 }
+
 .login {
     color: white;
+}
+
+.logout {
+    background: white;
+    border: none;
+    border-radius: 5px;
+    padding: 3px 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 100%;
 }

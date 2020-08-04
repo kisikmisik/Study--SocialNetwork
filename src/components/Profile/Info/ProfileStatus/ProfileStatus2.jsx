@@ -26,7 +26,7 @@ let ProfileStatus = (props) => {
             {
                 editMode ?
                     <input onChange={onChangeInput} autoFocus={true} type="text"
-                           value={userStatus}/> :
+                           value={userStatus} className={s.statusInput}/> :
                     <span className={s.statusText}>{props.userStatus ? props.userStatus : "No status"}</span>
             }
         </div>

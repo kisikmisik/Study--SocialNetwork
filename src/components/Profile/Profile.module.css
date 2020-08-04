@@ -1,11 +1,4 @@
 .profile {
-    background: white;
     grid-area: c;
-    margin: 15px;
-    border-radius: 15px;
-}
-
-.wrapper {
-    padding-left: 25px;
-    padding-top: 40px;
+    border-radius: 5px;
 }

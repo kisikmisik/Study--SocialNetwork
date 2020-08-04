@@ -1,8 +1,7 @@
 import React from "react";
 import s from './ImageInput.module.css'
-import {Field, reduxForm} from "redux-form";
+import {reduxForm} from "redux-form";
 import {compose} from "redux";
-import mapDispatchToProps from "react-redux/lib/connect/mapDispatchToProps";
 import {connect} from "react-redux";
 import {updateProfilePhotoThunk} from "../../../../redux/profilePage-reducer";
 
@@ -13,7 +12,10 @@ let ImageInput = (props) => {
     }
     return (
         <form onSubmit={props.handleSubmit}>
-            <input type="file" name='selectFile' onChange={onFileSelected}/>
+            <label className={s.fileInputWrapper}>
+                <span>Click to select new</span>
+                <input type="file" name='selectFile' onChange={onFileSelected}/>
+            </label>
         </form>
     )
 }

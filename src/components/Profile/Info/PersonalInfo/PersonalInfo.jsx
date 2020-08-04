@@ -11,19 +11,19 @@ const PersonalInfo = (props) => {
             <table className={s.table}>
                 <tbody>
                 <tr>
-                    <td>Job seeker:</td>
+                    <td className={s.title}>Job seeker:</td>
                     <td>{props.profileInfo.lookingForAJob ? <span>Yes</span> : <span>No</span>}</td>
                 </tr>
                 <tr>
-                    <td>Position:</td>
+                    <td className={s.title}>Position:</td>
                     <td>{props.profileInfo.lookingForAJobDescription}</td>
                 </tr>
                 <tr>
-                    <td>About me:</td>
+                    <td className={s.title}>About me:</td>
                     <td>{props.profileInfo.aboutMe}</td>
                 </tr>
                 <tr>
-                    <td>Contacts:</td>
+                    <td className={s.title}>Contacts:</td>
                     <td>{Object.keys(props.profileInfo.contacts).map(key => {
                         return <Contact key={key} contactTitle={key} contactLink={props.profileInfo.contacts[key]}/>
                     })}</td>

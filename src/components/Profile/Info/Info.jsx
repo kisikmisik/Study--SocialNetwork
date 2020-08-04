@@ -9,8 +9,8 @@ import PersonalInfoForm from "./PersonalInfo/PersonalInfoForm";
 const Info = (props) => {
     let [editMode, changeEditMode] = useState(false)
     let [isFormError, changeIsFormError] = useState(false)
+
     let onSubmit = (formData) => {
-        changeEditMode(false)
         let objectData = {
             ...formData, contacts: {
                 facebook: formData.facebook,
@@ -23,6 +23,8 @@ const Info = (props) => {
             }
         }
         props.saveProfileDataThunk(objectData)
+            .then(response => changeEditMode(false))
+            .then(response => window.location.reload(false))
     }
 
     let displayError = (errorMessage) => {
@@ -32,7 +34,6 @@ const Info = (props) => {
             changeIsFormError(true)
         }
     }
-
     if (!props.profileInfo) {
         return <Preloader/>
     } else {

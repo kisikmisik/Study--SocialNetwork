@@ -1,13 +1,28 @@
 .info {
     display: flex;
-    margin-bottom: 80px;
+    margin-bottom: 0;
     flex-wrap: wrap;
+    background: white;
+    padding: 40px;
+    border-radius: 5px;
 }
 .avatar {
     margin-right: 50px;
+    border-radius: 5px;
 }
-
 .editButton {
-    height: 40px;
+    background: #5181b8;
+    border: none;
+    color: white;
+    display: block;
     width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.imageWrapper {
+    position: relative;
+    height: 300px;
+    width: 300px;
+    margin-right: 60px;
 }

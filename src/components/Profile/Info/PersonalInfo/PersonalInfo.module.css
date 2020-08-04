@@ -1,13 +1,78 @@
+.personal {
+    position: relative;
+}
 .name {
      margin-top: 0;
      margin-bottom: 0;
      font-size: 26px;
  }
 .personal label {
-    display: block;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: #656565;
+    margin-bottom: 15px;
+}
+.personal label span {
+    margin-right: 7px;
+}
+.personal label input:not([type=checkbox]) {
+    padding: 5px 10px;
+    border: 1px solid #d8dee2;
+    border-radius: 5px;
+}
+.jobWrapper {
+    padding-right: 125px;
 }
 .status {
     color: gray;
     margin: 15px 0;
     cursor: pointer;
+    display: block;
+    padding: 5px 10px;
+}
+.status:hover {
+    background: #edeef0;
+}
+.editWrapper {
+    position: absolute;
+    bottom: 120px;
+    left: -360px;
+}
+.editButton {
+    background: #5181b8;
+    border: none;
+    color: white;
+    display: block;
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.cancelButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 30px;
+    color: white;
+    border-radius: 5px;
+    background: #ff3347;
+    cursor: pointer;
+}
+.table {
+    padding-top: 15px;
+}
+.table td {
+    padding-bottom: 15px;
+}
+.table .title {
+    font-size: 13px;
+    color: #848282;
+    padding-right: 40px;
+}
+.statusInput {
+    border: 1px solid #edeef0;
+    padding: 5px 10px;
+    border-radius: 5px;
 }

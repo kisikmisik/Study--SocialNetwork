@@ -1,0 +1,19 @@
+.fileInputWrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(237, 238, 240, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.fileInputWrapper:hover {
+    background: rgba(237, 238, 240, 0.8);
+}
+.fileInputWrapper input {
+    display: none;
+}

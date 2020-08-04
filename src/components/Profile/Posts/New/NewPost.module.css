@@ -1,27 +1,35 @@
 .wrapper {
-    height: 50px;
-    margin-bottom: 80px;
+    margin-bottom: 25px;
+    position: relative;
+    background: white;
+    width: 100%;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 5px;
 }
-
 .wrapper textarea {
-    height: 100%;
+    height: auto;
     box-sizing: border-box;
     padding: 15px;
+    padding-right: 170px;
     border: none;
-    width: 600px;
+    width: 650px;
     background: #edeef0;
     border-radius: 5px;
     font-family: Arial, sans-serif;
     font-size: 14px;
     resize: none;
 }
-
 .wrapper button {
-    height: 100%;
-    width: 200px;
+    height: 60px;
+    width: 150px;
     border: none;
     font-size: 20px;
     background: #4a76a8;
     color: white;
     border-radius: 5px;
+    position: absolute;
+    right: 335px;
+    top: 35px;
+    cursor: pointer;
 }

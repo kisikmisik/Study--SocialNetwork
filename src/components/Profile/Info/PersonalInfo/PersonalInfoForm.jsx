@@ -2,39 +2,41 @@ import React from 'react';
 import s from './PersonalInfo.module.css';
 import ProfileStatus from "./../ProfileStatus/ProfileStatus2";
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../../../common/FormsControls/FormsControls";
+import {Input, Textarea} from "../../../common/FormsControls/FormsControls";
 
 
 const PersonalInfoForm = (props) => {
-    console.log(props)
     return (
         <form className={s.personal} onSubmit={props.handleSubmit}>
-            <h2 className={s.name}>{props.profileInfo.fullName}</h2>
-            <label>
-                <span>About me:</span>
-                <Field name={'aboutMe'} component={'input'} type={'text'}/>
-            </label>
-            <label>
+            <h2 className={s.name + ' visually-hidden'}>{props.profileInfo.fullName}</h2>
+            <label className={s.fullNameWrapper}>
                 <span>Full name:</span>
-                <Field name={'fullName'} component={'input'} type={'text'}/>
+                <Field name={'fullName'} component={'input'} type={'text'} placeholder={'Name Surname'}/>
             </label>
-            <label>
+            <label className={s.aboutMeWrapper}>
+                <span>About me:</span>
+                <Field name={'aboutMe'} component={'input'} type={'text'} placeholder={'a few words..'}/>
+            </label>
+            <label className={s.jobWrapper}>
                 <span>Job seeker:</span>
                 <Field name={'lookingForAJob'} component={'input'} type={'checkbox'}/>
             </label>
-            <label>
+            <label className={s.positionWrapper}>
                 <span>Position:</span>
-                <Field name={'lookingForAJobDescription'} component={'input'} type={'text'}/>
+                <Field name={'lookingForAJobDescription'} component={'input'} type={'text'} placeholder={'it or gastronomy?'}/>
             </label>
-            {Object.keys(props.profileInfo.contacts).map(key => {
-                return <ContactInput key={key} inputName={key}/>
-            })}
+            <fieldset className={s.socialWrapper}>
+                <legend>Social media links:</legend>
+                {Object.keys(props.profileInfo.contacts).map(key => {
+                    return <ContactInput key={key} inputName={key}/>
+                })}
+            </fieldset>
             {props.isProfileYours && props.editMode === true &&
             <div className={s.editWrapper}>
-                <button className={s.editButton}>Save</button>
+                <button className={s.editButton}>Save changes</button>
                 <p onClick={() => {
                     props.changeEditMode(false)
-                }} className={s.editButton}>Cancel</p>
+                }} className={s.cancelButton}>Cancel</p>
             </div>}
             {props.error && <p className={s.formError}>{props.error}</p>}
             {props.error && props.displayError(props.error)}

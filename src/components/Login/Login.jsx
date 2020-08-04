@@ -10,20 +10,22 @@ import {Redirect} from "react-router-dom";
 let LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={s.form}>
-            <Field component={Input} name='email' type='email' placeholder='email'
-                   className={s.formLogin} validate={[required]}/>
-            <Field component={Input} name='password' type='password'
-                   placeholder='password' validate={[required]} className={s.formPassword}/>
-            <div className={s.loginBottom}>
-                <button className={s.formSubmit}>Log in</button>
-                <label className={s.rememberMeWrapper}>
-                    <Field component='input' type='checkbox' name='rememberMe' className={s.checkboxInput}/>
-                    <span>remember me</span>
-                </label>
+            <div className={s.formInnerWrapper}>
+                <Field component={Input} name='email' type='email' placeholder='email'
+                       className={s.formLogin} validate={[required]}/>
+                <Field component={Input} name='password' type='password'
+                       placeholder='password' validate={[required]} className={s.formPassword}/>
+                <div className={s.loginBottom}>
+                    <button className={s.formSubmit}>Log in</button>
+                    <label className={s.rememberMeWrapper}>
+                        <Field component='input' type='checkbox' name='rememberMe' className={s.checkboxInput}/>
+                        <span>remember me</span>
+                    </label>
+                </div>
+                {props.captchaUrl && <img src={props.captchaUrl} alt='captcha Image'/>}
+                {props.captchaUrl && <Field component={Input} type='text' name={'captcha'}/>}
+                {props.error && <p className={s.formError}>{props.error}</p>}
             </div>
-            {props.captchaUrl && <img src={props.captchaUrl} alt='captcha Image'/>}
-            {props.captchaUrl && <Field component={Input} type='text' name={'captcha'}/>}
-            {props.error && <p className={s.formError}>{props.error}</p>}
         </form>
     )
 }

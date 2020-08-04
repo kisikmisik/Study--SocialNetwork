@@ -8,11 +8,10 @@ const SET_IS_PROFILE_YOURS = 'profilePage-reducer/SET_IS_PROFILE_YOURS'
 const SET_PROFILE_PHOTO = 'profilePage-reducer/SET_PROFILE_PHOTO'
 const UPDATE_PROFILE_DATA = 'profilePage-reducer/UPDATE_PROFILE_DATA'
 
-
 let initialState = {
     postsData: [
-        {id: 1, message: "It's my first props!", likes: 20},
-        {id: 2, message: "Wow! That's amazing!", likes: 12}
+        {id: 1, message: "It's my first props!", likes: 20, liked: false},
+        {id: 2, message: "Wow! That's amazing!", likes: 12, liked: false}
     ],
     postAreaText: '',
     profileInfo: null,
@@ -27,11 +26,12 @@ let profileReducer = (state = initialState, action) => {
             let newPost = {
                 id: 3,
                 message: action.message,
-                likes: 15
+                likes: 0,
+                liked: false
             }
             return {
                 ...state,
-                postsData: [...state.postsData, newPost],
+                postsData: [newPost, ...state.postsData],
                 postAreaText: ""
             }
         case SET_PROFILE_INFO:
@@ -109,6 +109,7 @@ export const saveProfileDataThunk = (dataObject) => {
     return async (dispatch) => {
         let data = await profileAPI.saveProfileData(dataObject)
         if (data.resultCode === 0) {
+            debugger
             dispatch(updateProfileData(dataObject))
         } else {
             dispatch(stopSubmit("profileEdit", {_error: data.messages[0] || "Some error"}))

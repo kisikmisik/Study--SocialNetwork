@@ -1,19 +1,25 @@
 .form {
     display: flex;
-    flex-direction: column;
     width: 300px;
-    height: 200px;
+    height: auto;
+    flex-shrink: 0;
     border-radius: 5px;
     background: white;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+}
+.formInnerWrapper {
+    width: 250px;
+    margin-bottom: 40px;
+    margin-top: 40px;
 }
 .form input:not([type=checkbox]) {
     margin-bottom: 15px;
-    width: 220px;
+    width: 100%;
     border: 1px solid #d3d9de;
     padding: 7px 10px;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 .loginBottom {
     width: 240px;
@@ -53,6 +59,8 @@
     height: 600px;
     background: #edeef0;
     display: flex;
+    flex-shrink: 0;
     justify-content: center;
+    align-items: flex-start;
     padding-top: 30px;
 }

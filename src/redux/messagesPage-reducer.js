@@ -2,18 +2,18 @@ const ADD_MESSAGE = 'messagesPage-reducer/ADD-MESSAGE'
 
 let initialState = {
     messagesData: [
-        {id: 11, message: "Привет", classSet: "me"},
-        {id: 22, message: "Доров", classSet: "he"},
-        {id: 33, message: "Как дела?", classSet: "me"},
-        {id: 44, message: "Заебца", classSet: "he"},
-        {id: 55, message: "Сам как?", classSet: "he"}
+        {id: 11, message: "hi", classSet: "me"},
+        {id: 22, message: "heya", classSet: "other"},
+        {id: 33, message: "What's up?", classSet: "me"},
+        {id: 44, message: "ok", classSet: "other"},
+        {id: 55, message: "and you?", classSet: "other"}
     ],
     peopleData: [
-        {id: 111, name: "Оленька"},
-        {id: 222, name: "Дима"},
-        {id: 333, name: "Лиза"},
-        {id: 444, name: "Сережа"},
-        {id: 555, name: "Аркаша"}
+        {id: 111, name: "Olga"},
+        {id: 222, name: "Lukasz"},
+        {id: 333, name: "William"},
+        {id: 444, name: "Jorge"},
+        {id: 555, name: "Thom"}
     ],
     currentMessage: ""
 }

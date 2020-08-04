@@ -11,7 +11,7 @@ const Header = (props) => {
              {props.authData.isAuthorized ?
                  <div>
                      <p className={s.login}>{props.authData.login}</p>
-                     <button onClick={props.logout}>Logout</button>
+                     <button className={s.logout} onClick={props.logout}>Logout</button>
                  </div>
                  : <p className={s.login}>Login</p>}
             </div>

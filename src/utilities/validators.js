@@ -5,7 +5,7 @@ export const required = (fieldData) => {
     return "This field is required"
 }
 
-export const maxLengthCreator = (maxLength) => {
+export let maxLengthCreator = (maxLength) => {
     return (fieldData) => {
         if(fieldData.length > maxLength) return `Max length is ${maxLength + ' symbols'}`
         return undefined

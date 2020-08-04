@@ -45,10 +45,15 @@
 }
 .pages {
     margin-top: 15px;
+    display: flex;
 }
 .pages span {
-    margin-right: 10px;
+    display: block;
+    padding: 5px;
     cursor: pointer;
+}
+.pages span:hover {
+    background: #edeef0;
 }
 .currentPage {
     font-weight: bold;
