@@ -1,0 +1,22 @@
+.peopleWrapper {
+    width: 350px;
+    padding-top: 10px;
+    border-right: 2px solid #edeef0;
+}
+.dialog {
+    width: 100%;
+    display: flex;
+    padding-left: 40px;
+    box-sizing: border-box;
+    align-items: center;
+    margin: 0;
+    height: 70px;
+    border-bottom: 2px solid #edeef0;
+    cursor: pointer;
+}
+.dialog:hover {
+    background: rgba(237, 238, 240, 0.5);
+}
+.dialogPhoto {
+    margin-right: 10px;
+}

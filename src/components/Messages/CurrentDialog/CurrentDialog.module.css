@@ -1,0 +1,92 @@
+.dialogWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+    overflow: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.selectNotification {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0.5;
+}
+.selectNotification img {
+    margin-bottom: 15px;
+}
+.messageInputWrapper {
+    box-sizing: border-box;
+    padding: 0 50px;
+    position: fixed;
+    bottom: 0;
+    width: 740px;
+    height: 100px;
+    background: #fafbfc;
+    border-top: 1px solid #edeef0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.messageInputWrapper textarea {
+    border: 1px solid #edeef0;
+    border-radius: 5px;
+    height: 50px;
+    width: 550px;
+    box-sizing: border-box;
+    padding: 10px;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none;
+    padding-right: 100px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.messageInputWrapper button {
+    background: #5181b8;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    right: 100px;
+    width: 100px;
+    height: 40px;
+    color: white;
+    cursor: pointer;
+}
+.messageInputWrapper button:hover {
+    opacity: 0.7;
+}
+.messagesWrapper {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+.me, .other {
+    width: auto;
+    padding: 10px;
+    border: 1px solid #edeef0;
+    border-radius: 10px;
+    color: black;
+    margin-bottom: 5px;
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+.me {
+    align-self: flex-start;
+}
+.other {
+    margin-left: auto;
+    background: #edeef0;
+    align-self: flex-end;
+}

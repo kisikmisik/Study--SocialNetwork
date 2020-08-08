@@ -1,15 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from './Messages.module.css';
-import DialogsContainer from "./Dialogs/DialogsContainer";
-import ConversationContainer from "./Conversation/ConversationContainer";
+import {connect} from "react-redux";
+import Interlocutors from "./Interlocutors/Interlocutors";
+import CurrentDialog from "./CurrentDialog/CurrentDialog";
+import {sendNewMessage} from "../../redux/messagesPage-reducer";
+import photoMock from "../../assets/img/photoMock.png"
 
 const Messages = (props) => {
+    let [selectedDialogIndex, changeSelectedDialogIndex] = useState(null)
+
+    // catches index of dialog that has been clicked
+    let selectDialog = (evt) => {
+        for (let i = 0; i < props.dialogsData.length; i++) {
+            if (props.dialogsData[i].name === evt.target.innerText) {
+                changeSelectedDialogIndex(i)
+            }
+        }
+    }
     return (
-        <section className={s.messages}>
-           <DialogsContainer />
-           <ConversationContainer />
+        <section className={s.myMessages}>
+            <Interlocutors {...props} selectDialog={selectDialog} photoMock={photoMock}/>
+            <CurrentDialog {...props} selectedDialogIndex={selectedDialogIndex}/>
         </section>
     );
 }
 
-export default Messages;
+let mapStateToProps = (state) => {
+    return {
+        dialogsData: state.messagesPage.dialogsData
+    }
+}
+
+export default connect(mapStateToProps, {sendNewMessage})(Messages)

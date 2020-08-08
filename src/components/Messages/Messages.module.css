@@ -1,13 +1,12 @@
-.messages {
+.myMessages {
     display: flex;
     background: white;
     border-radius: 10px;
     padding-bottom: 30px;
     padding-left: 0;
-    height: 1000px;
-    width: 770px;
+    height: 100vh;
+    width: 1000px;
 }
-
 .messages ul {
     list-style: none;
 }
