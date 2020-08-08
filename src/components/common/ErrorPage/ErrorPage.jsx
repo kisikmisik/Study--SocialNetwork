@@ -1,10 +1,12 @@
 import React from 'react';
 import s from './ErrorPage.module.css';
+import errorImage from './../../../assets/img/error.svg'
 
 const ErrorPage = () => {
     return (
         <section className={s.errorPage}>
-            <span>404 not found</span>
+            <img src={errorImage} alt="404 image" width='300'/>
+            <span>Page Not Found</span>
         </section>
     );
 }

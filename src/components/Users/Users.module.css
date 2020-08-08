@@ -1,17 +1,7 @@
 .wrapper {
     background: white;
     border-radius: 5px;
-}
-
-.paginatorWrapper {
-    width: 700px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 60px;
-}
-.paginatorWrapper button {
-    height: 50px;
+    width: 800px;
 }
 .users {
    list-style: none;
@@ -38,23 +28,13 @@
 .followButton:disabled, followButton[disabled] {
     background: gray;
 }
+.followButton:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
 .userLocation, .userStatus {
     color: gray;
     font-size: 14px;
     margin: 5px
 }
-.pages {
-    margin-top: 15px;
-    display: flex;
-}
-.pages span {
-    display: block;
-    padding: 5px;
-    cursor: pointer;
-}
-.pages span:hover {
-    background: #edeef0;
-}
-.currentPage {
-    font-weight: bold;
-}
+

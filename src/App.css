@@ -12,9 +12,6 @@
     clip: rect(0 0 0 0);
     overflow: hidden;
 }
-
-
-
 html {
     background: #edeef0;
 }
@@ -23,7 +20,7 @@ html {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
-    padding-top: 70px;
+    padding-top: 80px;
     display: grid;
     grid-template-columns: 200px 1fr;
     grid-template-rows: 1fr;

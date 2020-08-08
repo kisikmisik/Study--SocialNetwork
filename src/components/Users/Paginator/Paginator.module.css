@@ -1,0 +1,41 @@
+.paginatorWrapper {
+    width: 100%;
+    padding: 0 50px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    border-bottom: 2px solid #edeef0;
+    height: 70px;
+    background: #fafbfc;
+}
+.currentPage {
+    font-weight: bold;
+}
+.paginatorWrapper button {
+    height: 50px;
+}
+.pages {
+    display: flex;
+}
+.pages span {
+    display: block;
+    padding: 5px;
+    cursor: pointer;
+}
+.pages span:hover {
+    background: #edeef0;
+}
+.prevArrow, .nextArrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:none;
+    background: transparent;
+    cursor: pointer;
+    opacity: 0.7;
+}
+.prevArrow:hover, .nextArrow:hover {
+    opacity: 0.5;
+}

@@ -1,0 +1,17 @@
+.errorPage {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    height: 100vh;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+.errorPage img {
+    height: 300px;
+    width: 300px;
+}
