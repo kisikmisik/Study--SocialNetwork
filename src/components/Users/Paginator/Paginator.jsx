@@ -34,8 +34,8 @@ let Paginator = (props) => {
 
             <div className={s.pages}>
                 {pages.filter((el => el <= currentRightBorder && el >= currentLeftBorder))
-                    .map(p => <span onClick={() => props.onPageChanged(p)}
-                                    className={props.currentPage === p && s.currentPage}>{p}</span>)}
+                    .map(p => <span key={p} onClick={() => props.onPageChanged(p)}
+                                    className={props.currentPage === p ? s.currentPage : ''}>{p}</span>)}
             </div>
             {currentPortion < portionsCount ?
                 <button className={s.nextArrow} onClick={nextPortion}>

@@ -2,23 +2,23 @@ import React from "react";
 import s from './FormsControls.module.css'
 import classNames from 'classnames'
 
-export const Textarea = (props) => {
-    let hasError = props.meta.error && props.meta.touched;
-    return (
-        <>
-            <textarea {...props.input} {...props} className={hasError ? s.error : 'field'}/>
-            {hasError && <span className={s.errorMessage}>{props.meta.error}</span>}
-        </>
-
-    )
+export class Textarea extends React.Component {
+    render() {
+        return (
+            <>
+                <textarea {...this.props.input} {...this.props}
+                          className={this.props.meta.error && this.props.meta.touched ? s.error : 'field'}/>
+                {this.hasError && <span className={s.errorMessage}>{this.props.meta.error}</span>}
+            </>
+        )
+    }
 }
 
 export const Input = (props) => {
-    let hasError = props.meta.error && props.meta.touched;
     return (
         <>
-            <input {...props.input} {...props} className={classNames(hasError ? s.error : 'field')}/>
-            {hasError && <span className={s.errorMessage}>{props.meta.error}</span>}
+            <input {...props.input} {...props} className={classNames(props.meta.error && props.meta.touched ? s.error : 'field')}/>
+            {props.meta.error && props.meta.touched && <span className={s.errorMessage}>{props.meta.error}</span>}
         </>
 
     )

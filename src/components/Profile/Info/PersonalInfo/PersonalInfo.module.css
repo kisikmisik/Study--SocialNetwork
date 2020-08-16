@@ -1,5 +1,6 @@
 .personal {
     position: relative;
+    max-width: 370px;
 }
 .name {
      margin-top: 0;
@@ -74,4 +75,21 @@
     border: 1px solid #edeef0;
     padding: 5px 10px;
     border-radius: 5px;
+}
+.contactTitle {
+    width: 80px;
+    margin: 0;
+    box-sizing: border-box;
+}
+.contactsWrapper p {
+    display: inline-block;
+    margin: 0;
+    margin-bottom: 10px;
+}
+.personalTitle {
+    display: inline-block;
+    width: 100px;
+}
+.socialWrapper {
+    padding-top: 20px;
 }

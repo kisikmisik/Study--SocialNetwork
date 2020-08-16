@@ -45,8 +45,6 @@ let mapStateToProps = (state) => {
         isFollowInProgress: state.usersPage.isFollowInProgress
     }
 }
-const UsersContainer = connect(mapStateToProps,
-    {setCurrentPage, getUsersThunk, followThunk, unfollowThunk})(UsersData)
 
 export default compose (
     connect(mapStateToProps, {setCurrentPage, getUsersThunk, followThunk, unfollowThunk}),

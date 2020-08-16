@@ -96,16 +96,7 @@ export const getUsersThunk = (pageLimit, currentPage) => {
     }
 }
 
-let followToggle = async (requestAction, dispatch, userID) => {
-    dispatch(toggleFollowProgress(true, userID));
-    let data = await manageSubscribeAPI.requestAction;
-    if (data.resultCode === 0) {
-        dispatch(requestAction);
-    }
-    dispatch(toggleFollowProgress(false, userID));
-}
 export const unfollowThunk = (userID) => {
-    let requestAction = unfollowUser(userID)
     return async (dispatch) => {
             dispatch(toggleFollowProgress(true, userID));
             let data = await manageSubscribeAPI.unfollowUser(userID);
@@ -117,7 +108,6 @@ export const unfollowThunk = (userID) => {
 }
 
 export const followThunk = (userID) => {
-    let requestAction = followUser(userID)
     return async (dispatch) => {
         dispatch(toggleFollowProgress(true, userID));
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import s from './Users.module.css';
 import {NavLink} from 'react-router-dom';
 import profileImage from '../../assets/img/nobody_profile_image.jpg';

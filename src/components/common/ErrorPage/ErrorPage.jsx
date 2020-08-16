@@ -5,7 +5,7 @@ import errorImage from './../../../assets/img/error.svg'
 const ErrorPage = () => {
     return (
         <section className={s.errorPage}>
-            <img src={errorImage} alt="404 image" width='300'/>
+            <img src={errorImage} alt="404 error" width='300'/>
             <span>Page Not Found</span>
         </section>
     );

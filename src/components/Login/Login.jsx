@@ -22,7 +22,7 @@ let LoginForm = (props) => {
                         <span>remember me</span>
                     </label>
                 </div>
-                {props.captchaUrl && <img src={props.captchaUrl} alt='captcha Image'/>}
+                {props.captchaUrl && <img src={props.captchaUrl} alt='captcha'/>}
                 {props.captchaUrl && <Field component={Input} type='text' name={'captcha'}/>}
                 {props.error && <p className={s.formError}>{props.error}</p>}
             </div>

@@ -1,6 +1,5 @@
 import {profileAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
-
 const ADD_POST = 'profilePage-reducer/ADD-POST'
 const SET_PROFILE_INFO = 'profilePage-reducer/SET-PROFILE-INFO'
 const SET_STATUS_TEXT = 'profilePage-reducer/SET-STATUS-TEXT'
@@ -58,7 +57,7 @@ let profileReducer = (state = initialState, action) => {
         case UPDATE_PROFILE_DATA:
             return {
                 ...state,
-                profileInfo: {...state.profileInfo, profileInfo: {...action.info}}
+                profileInfo: {...action.info}
             }
         default:
             return state
@@ -109,7 +108,6 @@ export const saveProfileDataThunk = (dataObject) => {
     return async (dispatch) => {
         let data = await profileAPI.saveProfileData(dataObject)
         if (data.resultCode === 0) {
-            debugger
             dispatch(updateProfileData(dataObject))
         } else {
             dispatch(stopSubmit("profileEdit", {_error: data.messages[0] || "Some error"}))

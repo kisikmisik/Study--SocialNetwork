@@ -1,4 +1,3 @@
-import React from 'react';
 import Old from "./Old";
 import {connect} from "react-redux";
 

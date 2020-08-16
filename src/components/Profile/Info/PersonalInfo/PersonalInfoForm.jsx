@@ -1,8 +1,7 @@
 import React from 'react';
 import s from './PersonalInfo.module.css';
-import ProfileStatus from "./../ProfileStatus/ProfileStatus2";
 import {Field, reduxForm} from "redux-form";
-import {Input, Textarea} from "../../../common/FormsControls/FormsControls";
+import {Input} from "../../../common/FormsControls/FormsControls";
 
 
 const PersonalInfoForm = (props) => {
@@ -28,7 +27,7 @@ const PersonalInfoForm = (props) => {
             <fieldset className={s.socialWrapper}>
                 <legend>Social media links:</legend>
                 {Object.keys(props.profileInfo.contacts).map(key => {
-                    return <ContactInput key={key} inputName={key}/>
+                    return <ContactInput profileInfo={props.profileInfo} key={key} inputName={key}/>
                 })}
             </fieldset>
             {props.isProfileYours && props.editMode === true &&
@@ -44,7 +43,7 @@ const PersonalInfoForm = (props) => {
 
     )
 }
-let ContactInput = ({inputName}) => {
+let ContactInput = ({profileInfo, inputName}) => {
     return (
         <label>
             <span>{inputName}</span>

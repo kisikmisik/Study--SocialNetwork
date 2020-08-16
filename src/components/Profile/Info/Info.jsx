@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import s from './Info.module.css';
 import Preloader from "../../common/Preloader/Preloader";
 import profilePhotoMock from '../../../assets/img/nobody_profile_image.jpg'
@@ -6,58 +6,83 @@ import ImageInput from "./ImageInput/ImageInput";
 import PersonalInfo from "./PersonalInfo/PersonalInfo";
 import PersonalInfoForm from "./PersonalInfo/PersonalInfoForm";
 
-const Info = (props) => {
-    let [editMode, changeEditMode] = useState(false)
-    let [isFormError, changeIsFormError] = useState(false)
+class Info extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {editMode: false, isFormError: false};
+    }
 
-    let onSubmit = (formData) => {
-        let objectData = {
-            ...formData, contacts: {
-                facebook: formData.facebook,
-                vk: formData.vk,
-                instagram: formData.instagram,
-                website: formData.website,
-                twitter: formData.twitter,
-                youtube: formData.youtube,
-                github: formData.github
+    changeEditMode = (status) => {
+        this.setState({editMode: status})
+    }
+    changeFormErrorStatus = (status) => {
+        this.setState({isFormError: status})
+    }
+    initialFormValues = () => {
+        let profileInfo = this.props.profileInfo
+        return { ...profileInfo,
+            facebook: profileInfo.contacts.facebook,
+            vk: profileInfo.contacts.vk,
+            website: profileInfo.contacts.website,
+            twitter: profileInfo.contacts.twitter,
+            instagram: profileInfo.contacts.instagram,
+            github: profileInfo.contacts.github,
+            youtube: profileInfo.contacts.youtube,
+            mainLink: profileInfo.contacts.mainLink
+        }
+    }
+
+    render() {
+        let onSubmit = (formData) => {
+            let objectData = {
+                ...formData, contacts: {
+                    facebook: formData.facebook,
+                    vk: formData.vk,
+                    instagram: formData.instagram,
+                    website: formData.website,
+                    twitter: formData.twitter,
+                    youtube: formData.youtube,
+                    github: formData.github
+                }
+            }
+            this.props.saveProfileDataThunk(objectData)
+                .then(() => this.changeEditMode(false))
+        }
+
+        let displayError = (errorMessage) => {
+            if (errorMessage !== undefined) {
+                return <p className={s.formError}>{errorMessage}</p>
+            } else {
+                this.changeFormErrorStatus(true)
             }
         }
-        props.saveProfileDataThunk(objectData)
-            .then(response => changeEditMode(false))
-            .then(response => window.location.reload(false))
-    }
-
-    let displayError = (errorMessage) => {
-        if (errorMessage !== undefined) {
-            return <p className={s.formError}>{errorMessage}</p>
+        if (!this.props.profileInfo) {
+            return <Preloader/>
         } else {
-            changeIsFormError(true)
-        }
-    }
-    if (!props.profileInfo) {
-        return <Preloader/>
-    } else {
-        return (
-            <section className={s.info}>
-                <div className={s.imageWrapper}>
-                    <img src={props.profileInfo.photos.large ? props.profileInfo.photos.large : profilePhotoMock}
-                         height="300" alt="profile pic" className={s.avatar}/>
-                    {props.isProfileYours && editMode && <ImageInput/>}
-                </div>
+            return (
+                <section className={s.info}>
+                    <div className={s.imageWrapper}>
+                        <img
+                            src={this.props.profileInfo.photos.large ? this.props.profileInfo.photos.large : profilePhotoMock}
+                            height="300" alt="profile pic" className={s.avatar}/>
+                        {this.props.isProfileYours && this.state.editMode && <ImageInput/>}
+                    </div>
 
-                {editMode ?
-                    <PersonalInfoForm onSubmit={onSubmit}
-                                      editMode={editMode}
-                                      changeEditMode={changeEditMode}
-                                      displayError={displayError}
-                                      {...props} initialValues={props.profileInfo}/> :
-                    <PersonalInfo {...props} editMode={editMode}/>}
-                {props.isProfileYours && editMode === false &&
-                <button onClick={() => {
-                    changeEditMode(true)
-                }} className={s.editButton}>Edit Profile</button>}
-            </section>
-        )
+                    {this.state.editMode ?
+                        <PersonalInfoForm onSubmit={onSubmit}
+                                          editMode={this.state.editMode}
+                                          changeEditMode={this.changeEditMode}
+                                          displayError={displayError}
+                                          {...this.props}
+                                          initialValues={this.initialFormValues()}/> :
+                        <PersonalInfo {...this.props} editMode={this.editMode}/>}
+                    {this.props.isProfileYours && this.state.editMode === false &&
+                    <button onClick={() => {
+                        this.changeEditMode(true)
+                    }} className={s.editButton}>Edit Profile</button>}
+                </section>
+            )
+        }
     }
 }
 
