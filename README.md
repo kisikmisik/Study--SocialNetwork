@@ -1,7 +1,7 @@
 
 ## React trial social network, v. 0.1
 
-Note: Back-end part of the network realised by this guy (https://www.youtube.com/c/ITKAMASUTRA/videos)
+Note: Back-end part of the network developed by this guy (https://www.youtube.com/c/ITKAMASUTRA/videos)
 
 ### Functionality:
 
