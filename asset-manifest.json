@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/Study--SocialNetwork/static/css/main.30dc2af5.chunk.css",
+    "main.js": "/Study--SocialNetwork/static/js/main.bb971bab.chunk.js",
+    "main.js.map": "/Study--SocialNetwork/static/js/main.bb971bab.chunk.js.map",
+    "runtime-main.js": "/Study--SocialNetwork/static/js/runtime-main.50da3eeb.js",
+    "runtime-main.js.map": "/Study--SocialNetwork/static/js/runtime-main.50da3eeb.js.map",
+    "static/js/2.5a5746ca.chunk.js": "/Study--SocialNetwork/static/js/2.5a5746ca.chunk.js",
+    "static/js/2.5a5746ca.chunk.js.map": "/Study--SocialNetwork/static/js/2.5a5746ca.chunk.js.map",
+    "index.html": "/Study--SocialNetwork/index.html",
+    "precache-manifest.e55c790f67f5e383646b130a621312cc.js": "/Study--SocialNetwork/precache-manifest.e55c790f67f5e383646b130a621312cc.js",
+    "service-worker.js": "/Study--SocialNetwork/service-worker.js",
+    "static/css/main.30dc2af5.chunk.css.map": "/Study--SocialNetwork/static/css/main.30dc2af5.chunk.css.map",
+    "static/js/2.5a5746ca.chunk.js.LICENSE.txt": "/Study--SocialNetwork/static/js/2.5a5746ca.chunk.js.LICENSE.txt",
+    "static/media/Spinner-1s-200px.svg": "/Study--SocialNetwork/static/media/Spinner-1s-200px.caacf12e.svg",
+    "static/media/chat.svg": "/Study--SocialNetwork/static/media/chat.7e0e3b50.svg",
+    "static/media/error.svg": "/Study--SocialNetwork/static/media/error.f36e4c88.svg",
+    "static/media/gear.svg": "/Study--SocialNetwork/static/media/gear.10c94f85.svg",
+    "static/media/heart-blue.svg": "/Study--SocialNetwork/static/media/heart-blue.5296fdf6.svg",
+    "static/media/heart.svg": "/Study--SocialNetwork/static/media/heart.e2fb03b6.svg",
+    "static/media/left-arrow.svg": "/Study--SocialNetwork/static/media/left-arrow.77c86913.svg",
+    "static/media/nobody_profile_image.jpg": "/Study--SocialNetwork/static/media/nobody_profile_image.461b9611.jpg",
+    "static/media/photoMock.png": "/Study--SocialNetwork/static/media/photoMock.55b5f2b0.png",
+    "static/media/right-arrow.svg": "/Study--SocialNetwork/static/media/right-arrow.4b713cfe.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.50da3eeb.js",
+    "static/js/2.5a5746ca.chunk.js",
+    "static/css/main.30dc2af5.chunk.css",
+    "static/js/main.bb971bab.chunk.js"
+  ]
+}
