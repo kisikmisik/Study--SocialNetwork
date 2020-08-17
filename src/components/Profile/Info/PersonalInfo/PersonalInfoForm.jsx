@@ -32,7 +32,9 @@ const PersonalInfoForm = (props) => {
             </fieldset>
             {props.isProfileYours && props.editMode === true &&
             <div className={s.editWrapper}>
-                <button className={s.editButton}>Save changes</button>
+                {props.isChangesLoading ?
+                    <button className={s.disabledSaveButton} disabled={true}>Loading..</button> :
+                    <button className={s.editButton}>Save changes</button>}
                 <p onClick={() => {
                     props.changeEditMode(false)
                 }} className={s.cancelButton}>Cancel</p>

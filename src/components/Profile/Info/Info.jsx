@@ -9,7 +9,11 @@ import PersonalInfoForm from "./PersonalInfo/PersonalInfoForm";
 class Info extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {editMode: false, isFormError: false};
+        this.state = {
+            editMode: false, // if true - edit form shows instead of info block
+            isFormError: false, // if true - form does not save changes
+            isChangesLoading: false // if true - save changes button is disabled
+        };
     }
 
     changeEditMode = (status) => {
@@ -34,6 +38,7 @@ class Info extends React.Component {
 
     render() {
         let onSubmit = (formData) => {
+            // making deep copy of formData obj to save contacts also
             let objectData = {
                 ...formData, contacts: {
                     facebook: formData.facebook,
@@ -45,8 +50,12 @@ class Info extends React.Component {
                     github: formData.github
                 }
             }
+            this.setState({isChangesLoading: true})
             this.props.saveProfileDataThunk(objectData)
-                .then(() => this.changeEditMode(false))
+                .then(() => {
+                    this.changeEditMode(false)
+                    this.setState({isChangesLoading: false})
+                })
         }
 
         let displayError = (errorMessage) => {
@@ -70,6 +79,7 @@ class Info extends React.Component {
 
                     {this.state.editMode ?
                         <PersonalInfoForm onSubmit={onSubmit}
+                                          isChangesLoading={this.state.isChangesLoading}
                                           editMode={this.state.editMode}
                                           changeEditMode={this.changeEditMode}
                                           displayError={displayError}

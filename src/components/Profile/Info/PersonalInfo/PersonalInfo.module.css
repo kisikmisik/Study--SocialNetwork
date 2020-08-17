@@ -93,3 +93,13 @@
 .socialWrapper {
     padding-top: 20px;
 }
+.disabledSaveButton {
+    background: gray;
+    opacity: 0.6;
+    border: none;
+    color: white;
+    display: block;
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+}

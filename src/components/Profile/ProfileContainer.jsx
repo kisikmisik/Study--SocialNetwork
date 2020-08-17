@@ -53,15 +53,13 @@ class ProfileAPI extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => {
-    return {
-        profileInfo: state.profilePage.profileInfo,
-        isAuth: state.authReducer.isAuthorized,
-        userStatus: state.profilePage.userStatus,
-        authorizedId: state.authReducer.id,
-        isProfileYours: state.profilePage.isProfileYours
-    }
-};
+let mapStateToProps = (state) => ({
+    profileInfo: state.profilePage.profileInfo,
+    isAuth: state.authReducer.isAuthorized,
+    userStatus: state.profilePage.userStatus,
+    authorizedId: state.authReducer.id,
+    isProfileYours: state.profilePage.isProfileYours
+});
 
 export default compose(
     connect(mapStateToProps, {

@@ -3,8 +3,6 @@ import s from './PersonalInfo.module.css';
 import ProfileStatus from "./../ProfileStatus/ProfileStatus2";
 
 const PersonalInfo = (props) => {
-    useEffect(() => {
-    }, [props])
     return (
         <div className={s.personal}>
             <h2 className={s.name}>{props.profileInfo.fullName}</h2>

@@ -42,12 +42,16 @@
     height: 40px;
     cursor: pointer;
 }
+.formSubmit:hover {
+    opacity: 0.8;
+}
 .rememberMeWrapper {
     width: 50%;
     display: flex;
     align-items: center;
     font-size: 13px;
     padding-left: 10px;
+    cursor: pointer;
 }
 .checkboxInput {
     margin-right: 5px;
@@ -63,4 +67,13 @@
     justify-content: center;
     align-items: flex-start;
     padding-top: 30px;
+}
+.disabledButton {
+    width: 50%;
+    opacity: 0.6;
+    border: none;
+    background: gray;
+    color: white;
+    border-radius: 5px;
+    height: 40px;
 }

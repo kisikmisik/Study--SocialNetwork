@@ -25,10 +25,8 @@ const Messages = (props) => {
     );
 }
 
-let mapStateToProps = (state) => {
-    return {
-        dialogsData: state.messagesPage.dialogsData
-    }
-}
+let mapStateToProps = (state) => ({
+    dialogsData: state.messagesPage.dialogsData
+})
 
 export default connect(mapStateToProps, {sendNewMessage})(Messages)
