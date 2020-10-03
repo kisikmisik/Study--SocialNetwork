@@ -6,14 +6,15 @@ const CHECK_AUTH_DATA = 'appReducer/CHECK-AUTH-DATA'
 const SET_CAPTCHA_URL = 'appReducer/SET_CAPTCHA_URL'
 
 let initialState = {
-    id: null,
-    email: null,
-    login: null,
-    isAuthorized: false,
-    captchaUrl: null
+    id: null as unknown as number,
+    email: null as unknown as string,
+    login: null as unknown as string,
+    isAuthorized: false as boolean,
+    captchaUrl: null as unknown as string
 }
+export type authReducerType = typeof initialState
 
-let authReducer = (state = initialState, action) => {
+let authReducer = (state = initialState, action: any): authReducerType => {
     switch (action.type) {
         case SET_AUTH_DATA:
             return {
@@ -37,12 +38,31 @@ let authReducer = (state = initialState, action) => {
 }
 export default authReducer;
 
-export const setAuthData = (data) => ({type: SET_AUTH_DATA, data})
-export const checkAuthData = (status) => ({type: CHECK_AUTH_DATA, status})
-export const setCaptchaUrl = (url) => ({type: SET_CAPTCHA_URL, url})
+type setAuthDataType = {
+    id: number | null
+    email: string | null
+    login: string | null
+}
+type setAuthDataReturnType = {
+    type: typeof SET_AUTH_DATA
+    data: setAuthDataType
+}
+export const setAuthData = (data: setAuthDataType): setAuthDataReturnType => ({type: SET_AUTH_DATA, data})
 
-export const loginThunk = (loginData) => {
-    return async (dispatch) => {
+type checkAuthDataType = {
+    type: typeof CHECK_AUTH_DATA
+    status: boolean
+}
+export const checkAuthData = (status: boolean): checkAuthDataType => ({type: CHECK_AUTH_DATA, status})
+
+type setCaptchaUrlType = {
+    type: typeof SET_CAPTCHA_URL
+    url: string | null
+}
+export const setCaptchaUrl = (url: string | null): setCaptchaUrlType => ({type: SET_CAPTCHA_URL, url})
+
+export const loginThunk = (loginData: any) => {
+    return async (dispatch: any) => {
         let data = await authAPI.login(loginData);
         if (data.resultCode === 0) {
             let authData = await authAPI.getAuthData();
@@ -62,9 +82,9 @@ export const loginThunk = (loginData) => {
 }
 
 export const logout = () => {
-    return async (dispatch) => {
+    return async (dispatch: any) => {
         await authAPI.logout();
         dispatch(checkAuthData(false))
-        dispatch(setAuthData({id:null, email:null, login:null}))
+        dispatch(setAuthData({id: null, email: null, login: null}))
     }
 }

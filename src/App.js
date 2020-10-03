@@ -36,7 +36,7 @@ class App extends React.Component {
                             <Route path='/music' component={Music}/>
                             <Route path='/settings' component={SettingsContainer}/>
                             <Redirect from='/' to={'/profile'} exact/>
-                            {/*<Route path='*' component={ErrorPage}/>*/}
+                            <Route path='*' component={LoginWithAuth}/>
                         </Switch>
                     </div>
                 </div>

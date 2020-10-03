@@ -1,6 +1,13 @@
 const SEND_MESSAGE = 'messagesPage-reducer/SEND-MESSAGE'
 
-// at the moment there is no api for dialogs at our server, so I temporarily put mocks
+type dialogsDataType = {
+    id: number
+    name: string
+    photo: string
+    messages: Array<{id: number, message: string, classSet: string}>
+}
+
+// at the moment there is no api for dialogs at our server, so I temporarily wrote some mocks
 let initialState = {
     dialogsData: [
         {id: 111, name: "Olga Plotskaya", photo: '', messages: [
@@ -38,9 +45,11 @@ let initialState = {
                 {id: 44, message: "ok", classSet: "other"},
                 {id: 55, message: "and you?", classSet: "other"}
             ]}
-    ]
+    ] as Array<dialogsDataType>
 }
-let messagesReducer = (state = initialState, action) => {
+
+export type initialStateType = typeof initialState;
+let messagesReducer = (state = initialState, action: any): initialStateType => {
     switch (action.type) {
         case SEND_MESSAGE:
             let newMessage = {
@@ -60,4 +69,9 @@ let messagesReducer = (state = initialState, action) => {
 }
 export default messagesReducer;
 
-export const sendNewMessage = (message, dialogIndex) => ({ type: SEND_MESSAGE, message, dialogIndex})
+type sendMessageType = {
+    type: typeof SEND_MESSAGE
+    message: string
+    dialogIndex: number
+}
+export const sendNewMessage = (message: string, dialogIndex: number): sendMessageType => ({ type: SEND_MESSAGE, message, dialogIndex})
